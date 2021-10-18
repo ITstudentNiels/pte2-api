@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Homepage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-8 pt-3">Dashboard</div>
+                <div class="col-3 pt-3 text-right">
+                    <form method="POST" action="/logout">
+                        <button type="submit" class="btn btn-primary">Log out</button>
+                    </form>    
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-5">
+                    <h2>Welcome <%= user.fullname%></h2>
+                </div>
+                <div class="col-md-6">
+                    <% if(errors != "") { %>
+                        <% errors.forEach((item) => { %>
+                            <div class="alert alert-danger">
+                                <%- item %>
+                            </div>
+                        <% }); %>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="form-control">
+                        <h4>Set instance type/database</h4>
+                        <p>Please select an instace type and click the Save type button.</p>
+
+                        <form method="POST" action="/setOptions" onchange="checkOption();">
+                            <label for="webserver">Select an instance type:</label>
+                            <select name="webserver" id="webserver">
+                                <option value="Apache">Apache2</option>
+                                <option value="Wordpress">Wordpress</option>
+                                <option value="NodeJS">NodeJS</option>
+                            </select>
+                            <br>
+                            <label for="databasee">Select a database:</label>
+                            <select name="database" id="database">
+                                <option value="MySQL">MySQL</option>
+                                <option value="MongoDB">MongoDB</option>
+                                <option value="?">?</option>
+                            </select>
+                            <br>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-login">Save type</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="form-control">
+                        <h4>Upload files</h4>
+                        <p>Click the link below to upload your website files. NOTE: when you selected Wordpress as instance type you don't need to upload files.</p>
+                        <a href="#">Upload files</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 offset-md-0">
+                    <div class="form-control">
+                        <h4>Start instance</h4>
+                        <p>You can start a new instance after the old one has expired. When you start an instance it will be available for 2 hours.</p>
+                        <p>When you check this box all the data on your old instance will be removed and the newly uploaded data will be used.</p>
+                        <form method="POST" action="/startInstance">
+                                <label for="checkbox">Remove data?</label>
+                                <input type="checkbox" id="checkbox" name="checkbox" value="remove">
+                            
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-login float-right">Start instance</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-5">
+                    <div class="form-control">
+                        <h4>Instance timer</h4>
+                        <p>We use a fair use policy so everyone had a chance to host there project. Therefor we choose to use shutdown every instance after 2 hours.</p>
+                        <div class="d-flex justify-content-center">
+                            <p id="timer"></p>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-5 off-set-md-0">
+                    <div class="form-control">
+                        <h4>Instance information</h4>
+                        <table>
+                            <tr>
+                                <td>Domainname</td>
+                                <td><a href="<%= info.domain_name %>"><%= info.domain_name %></a></td>
+                            </tr>
+                            <tr>
+                                <td>Instance Type</td>
+                                <td><%= info.instance_type %></td>
+                            </tr>
+                            <tr>
+                                <td>Database</td>
+                                <td><%= info.database %></td>
+                            </tr>
+                            <tr>
+                                <td>Total files uploaded</td>
+                                <td><%= info.files_uploaded %></td>
+                            </tr>
+                            <tr>
+                                <td>SSL installed?</td>
+                                <td>yes</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-control">
+                        <h4>Monitoring</h4>
+
+                        <iframe src="http://192.168.12.149:3000/d-solo/rYdddlPWk/node-exporter-full?orgId=1&refresh=1m&from=1634398838006&to=1634485238006&theme=light&panelId=20" width="450" height="200" frameborder="0"></iframe>                    
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+    </body>
+    <script>
+        document.getElementById('webserver').value = '<%= info.tmp_instance_type %>';
+        document.getElementById('database').value = '<%= info.tmp_database %>';
+
+        if(document.getElementById('webserver').value === 'Wordpress') {
+            document.getElementById('database').disabled = true;
+        }
+
+        function checkOption() {
+            var instanceOption = document.getElementById('webserver');
+            var databaseOption = document.getElementById('database');
+
+            if (instanceOption.value == 'Wordpress') {
+                databaseOption.disabled = true;
+            }
+            else {
+                databaseOption.disabled = false;
+            }
+        }
+
+        var countDownTime = new Date('<%= info.valid_until %>').getTime();
+
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+
+            var diff = countDownTime - now;
+
+            var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 *60));
+            var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+            console.log(diff);
+            if (diff < 1800000) {
+                document.getElementById('timer').style.color = "red";
+            }
+
+            if (diff < 0) {
+                clearInterval(x);
+                document.getElementById('timer').innerHTML = "INSTANCE EXPIRED";
+            }
+        }, 1000);
+    </script>
+</html>
