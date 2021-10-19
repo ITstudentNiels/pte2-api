@@ -16,7 +16,7 @@
 
 .image {
     margin-top: 70px;
-    content: url("../images/undraw_fill_form_re_cwyf.png");
+    content: url("../images/logo.png");
     background-position: center center;
     background-repeat: no-repeat;
     opacity: 0.9;
@@ -27,7 +27,15 @@
 
 .btn-login {
     color: white;
-    background-color: #eea64a;
+    background-color: #663366;
+}
+
+.btn-login:hover {
+  background: #a34ea3;
+}
+
+a {
+  color: #663366 !important;
 }
 
 table {
@@ -48,22 +56,3 @@ td:nth-child(odd) {
 tr:nth-child(even) {
   background-color: #ececec;
 }
-
-/* .red {
-    border: 1px solid red;
-}
-
-.green {
-    border: 1px solid green;
-} */
-
-/* .login-left {
-    background-image: url("../images/logo.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
-    opacity: 0.9;
-    height: 600px;
-    border-radius: 3px;
-} */

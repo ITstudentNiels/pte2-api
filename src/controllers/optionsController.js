@@ -47,11 +47,10 @@ let startInstance = async (req, res) => {
         )
     } catch (err) {
         throw err;
-    }
-    
+    } 
 };
 
 module.exports = {
     setOptions: setOptions,
-    startInstance: startInstance
+    startInstance: startInstance,
 }
