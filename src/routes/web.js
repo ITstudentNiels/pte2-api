@@ -28,6 +28,7 @@ let initWebRoutes = (app) => {
 
     router.post("/setOptions", optionsController.setOptions);
     router.post("/startInstance", optionsController.startInstance);
+    router.get("/filesUploaded", optionsController.filesUploaded);
 
     return app.use("/", router);
 };

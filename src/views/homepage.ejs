@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" type="image/jpg" href="/images/favicon.ico"/>
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -29,17 +30,18 @@
                 </div>
                 <div class="col-md-6">
                     <% if(errors != "") { %>
-                        <% errors.forEach((item) => { %>
-                            <div class="alert alert-danger">
-                                <%- item %>
-                            </div>
-                        <% }); %>
+                            <div class="alert <%- errors[1] %> alert-dismissable fade show" id="alert">
+                                <%- errors[0] %>
+             			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true"><%- errors[2] %></span>
+				</button>
+                            </div>                    
                     <% } %>
                 </div>
             </div>
 
             <div class="row mt-4">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-control">
                         <h4>Set instance type/database</h4>
                         <p>Please select an instace type and click the Save type button.</p>
@@ -47,16 +49,16 @@
                         <form method="POST" action="/setOptions" onchange="checkOption();">
                             <label for="webserver">Select an instance type:</label>
                             <select name="webserver" id="webserver">
-                                <option value="Apache">Apache2</option>
+                                <option value="Apache" selected>Apache2</option>
                                 <option value="Wordpress">Wordpress</option>
                                 <option value="NodeJS">NodeJS</option>
                             </select>
                             <br>
                             <label for="databasee">Select a database:</label>
                             <select name="database" id="database">
-                                <option value="MySQL">MySQL</option>
+                                <option value="MySQL" selected>MySQL</option>
                                 <option value="MongoDB">MongoDB</option>
-                                <option value="?">?</option>
+                                <option value="nDB">No database</option>
                             </select>
                             <br>
                             <div class="d-flex justify-content-end">
@@ -65,10 +67,11 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <div class="form-control">
                         <h4>Upload files</h4>
-                        <p>Click the link below to upload your website files. NOTE: when you selected Wordpress as instance type you don't need to upload files.</p>
+		        <p>Click the link below to upload your website files. NOTE: when you selected Wordpress as instance type you don't need to upload files.</p
+                        <p>The upload is password protected, hover to see the password: <span class="files-pass"><%= user.files_pass %></span></p>
                         
                         <button type="button" class="btn btn-login" data-toggle="modal" data-target="#modalUpload">Upload files</button>
                         <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -81,7 +84,7 @@
                                 <div class="modal-body mb-0 p-0">
                           
                                   <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                                    <iframe class="embed-responsive-item" src="<%= user.files_url %>" allowfullscreen></iframe>
+                                    <iframe class="embed-responsive-item" scrolling="no" src="<%= user.files_url %>" allowfullscreen></iframe>
                                   </div>
                           
                                 </div>
@@ -190,13 +193,25 @@
         </div> 
     </body>
     <script>
+	if ('<%= user.active %>' == 0) {
+		setTimeout(function(){ location.reload()}, 2000);
+	}	
+
+	window.onclick = function(event) {
+		if (event.target == document.getElementById('modalUpload')) {
+			fetch(window.location.href + 'filesUploaded');
+ 			console.log('fetched filesUploaded');
+			setTimeout(function(){ location.reload()}, 2000);
+		}
+	}
+
         document.getElementById('webserver').value = '<%= info.tmp_instance_type %>';
         document.getElementById('database').value = '<%= info.tmp_database %>';
 
         if(document.getElementById('webserver').value === 'Wordpress') {
             document.getElementById('database').disabled = true;
         }
-
+	
         function checkOption() {
             var instanceOption = document.getElementById('webserver');
             var databaseOption = document.getElementById('database');
@@ -221,7 +236,7 @@
             var seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
             document.getElementById('timer').innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
-            console.log(diff);
+
             if (diff < 1800000) {
                 document.getElementById('timer').style.color = "red";
             }
@@ -229,7 +244,19 @@
             if (diff < 0) {
                 clearInterval(x);
                 document.getElementById('timer').innerHTML = "INSTANCE EXPIRED";
-            }
+		console.log('<%= info.status %>');
+		if ('<%= info.status %>' == 1) {
+		        fetch(window.location.href + 'instanceExpired');
+			console.log("Instance expired");
+		}
+	    }
+
+	    if ('<%= info.valid_until %>' == '') {
+		document.getElementById('timer').innerHTML = "";
+	    }
         }, 1000);
+
+	
+
     </script>
 </html>

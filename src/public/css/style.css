@@ -56,3 +56,19 @@ td:nth-child(odd) {
 tr:nth-child(even) {
   background-color: #ececec;
 }
+
+.files-pass {
+	color: #663366;
+	background-color: #663366;
+}
+
+.files-pass:hover {
+	color: #495057;
+	background-color: white;
+}
+
+.alert-color {
+       color: #663366;
+       background-color: #a34ea3;
+       border-color: #663366;
+}
