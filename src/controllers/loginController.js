@@ -55,3 +55,4 @@ module.exports = {
     checkLoggedOut: checkLoggedOut,
     postLogOut: postLogOut
 };
+

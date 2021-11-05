@@ -1,6 +1,9 @@
 import DBConnection from "../configs/DBConnection";
 import * as nx from "nextcloud-node-client";
+<<<<<<< HEAD
 import { check } from "express-validator";
+=======
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
 require('dotenv').config();
 
 //Function executed from routes/web.js
@@ -9,6 +12,13 @@ let setOptions = async (req, res) => {
     let optionDatabase = req.body.database;
     let optionWebserver = req.body.webserver;
     let userId = req.user.id;
+<<<<<<< HEAD
+=======
+    if (!optionDatabase || optionDatabase == 'nDB') {
+	optionDatabase = '';
+    }
+    console.log(optionDatabase, optionWebserver);
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
 
     //Check if database option is noDatabase and set empty
     if (!optionDatabase || optionDatabase == 'nDB') {
@@ -19,6 +29,7 @@ let setOptions = async (req, res) => {
     try {
         DBConnection.query(
             ' UPDATE `tmp` SET `database` = ?, instance_type = ? WHERE `instance_from` = ?', [optionDatabase, optionWebserver, userId],
+<<<<<<< HEAD
             function (err) {
                 if (err) {
                     req.flash("alert", "Something went wrong! Please try again or contact the administrator. ERROR: OC:15");
@@ -34,6 +45,20 @@ let setOptions = async (req, res) => {
     } catch (err) {
         req.flash("alert", "Something went wrong! Please try again or contact the administrator, ERROR: DC:0");
         req.flash("alert", "alert-danger");
+=======
+            function (err, result, chosen) {
+                if (err) throw err;
+                console.log(chosen)
+                req.flash("errors", "The instance and database are changed, after starting a new instance they will be used.");
+                req.flash("errors", "alert-success");
+                res.redirect("/")
+            }
+        )
+    } catch (err) {
+        throw err
+        req.flash("errors", "Something went wrong, please submit again!");
+        req.flash("errors", "alert-warning");
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
         res.redirect("/");
     }
 };
@@ -59,6 +84,7 @@ let startInstance = async (req, res) => {
                 var webserver = result[0].instance_type;
                 //Update the instance information
                 DBConnection.query(
+<<<<<<< HEAD
                     ' UPDATE `instances` SET `valid_until` = DATE_ADD(now(),interval ? hour), `database` = ?, instance_type = ? WHERE `instance_from` = ?', [process.env.INSTANCE_HOURS, database, webserver, userId],
                     function (err) {
                         if (err) {
@@ -70,6 +96,14 @@ let startInstance = async (req, res) => {
                             req.flash("alert", "alert-success");
                             res.redirect("/");
                         };
+=======
+                    ' UPDATE `instances` SET `database` = ?, instance_type = ? WHERE `instance_from` = ?', [database, webserver, userId],
+                    function (err, result) {
+                        if (err) throw err;
+                        req.flash("errors", "Instances started, it will take a few minutes before the instance is fully booted");
+			req.flash("errors", "alert-success");
+                        res.redirect("/");
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
                     }
                 )
             }
@@ -81,6 +115,7 @@ let startInstance = async (req, res) => {
     } 
 };
 
+<<<<<<< HEAD
 //Function executed from routes/web.js
 let stopInstance = async (req, res) => {
     req.flash("alert", "Instance stopped");
@@ -91,6 +126,10 @@ let stopInstance = async (req, res) => {
 //Function executed from routes/web.js
 let filesUploaded = async (req, res) => {
     //Init server with the credentials
+=======
+let filesUploaded = async (req, res) => {
+	console.log('filesUploaded ran');
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
 	const server = new nx.Server({
 		basicAuth: {
 			password: process.env.NX_PASSWORD,
@@ -98,6 +137,7 @@ let filesUploaded = async (req, res) => {
 		},
 		url: "http://" + process.env.NX_HOST,
 	});
+<<<<<<< HEAD
 	try {
         //Init client with the server details
         const client = new nx.Client(server);
@@ -194,4 +234,30 @@ module.exports = {
     filesUploaded: filesUploaded,
     submitFiles: submitFiles,
     introDone: introDone,
+=======
+	const client = new nx.Client(server);
+	const folder = await client.getFolder("/" + req.user.student_id);
+	const files = await folder.getFiles();
+        const filesLength = files.length;
+	console.log(client);
+	try {
+		DBConnection.query(
+			' UPDATE `instances` SET `files_uploaded` = ? WHERE `instance_from` = ?', [filesLength, req.user.id],
+			function (err, result) {
+				if (err) throw err;
+                                req.flash("errors", "The uploaded files are saved, when a new instance is started they will be used!");
+				req.flash("errors", "alert-success");
+				res.redirect("/");
+			}
+		)
+	} catch (err) {
+		throw err;
+	}
+};
+
+module.exports = {
+    setOptions: setOptions,
+    startInstance: startInstance,
+    filesUploaded: filesUploaded,
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
 }

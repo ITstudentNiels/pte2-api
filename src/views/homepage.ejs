@@ -6,10 +6,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
         <meta name="robots" content="noindex,nofollow">
         <!-- Set Favicon -->
         <link rel="shortcut icon" href="/images/favicon.ico" />        
         <!-- Import css style -->
+=======
+        <link rel="shortcut icon" type="image/jpg" href="/images/favicon.ico"/>
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
         <link rel="stylesheet" href="/css/style.css">
         <!-- Import bootstrap css -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -46,6 +50,7 @@
                 </div>
                 <!-- Show an alert message if exists -->
                 <div class="col-md-6">
+<<<<<<< HEAD
                     <% if (alert != "") { %>
                             <div class="alert <%- alert[1] %> alert-dismissable fade show" id="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -96,6 +101,66 @@
                                 <!-- Button to submit the form -->
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-color">Save type</button>
+=======
+                    <% if(errors != "") { %>
+                            <div class="alert <%- errors[1] %> alert-dismissable fade show" id="alert">
+                                <%- errors[0] %>
+             			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true"><%- errors[2] %></span>
+				</button>
+                            </div>                    
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-5">
+                    <div class="form-control">
+                        <h4>Set instance type/database</h4>
+                        <p>Please select an instace type and click the Save type button.</p>
+
+                        <form method="POST" action="/setOptions" onchange="checkOption();">
+                            <label for="webserver">Select an instance type:</label>
+                            <select name="webserver" id="webserver">
+                                <option value="Apache" selected>Apache2</option>
+                                <option value="Wordpress">Wordpress</option>
+                                <option value="NodeJS">NodeJS</option>
+                            </select>
+                            <br>
+                            <label for="databasee">Select a database:</label>
+                            <select name="database" id="database">
+                                <option value="MySQL" selected>MySQL</option>
+                                <option value="MongoDB">MongoDB</option>
+                                <option value="nDB">No database</option>
+                            </select>
+                            <br>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-login">Save type</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-control">
+                        <h4>Upload files</h4>
+		        <p>Click the link below to upload your website files. NOTE: when you selected Wordpress as instance type you don't need to upload files.</p
+                        <p>The upload is password protected, hover to see the password: <span class="files-pass"><%= user.files_pass %></span></p>
+                        
+                        <button type="button" class="btn btn-login" data-toggle="modal" data-target="#modalUpload">Upload files</button>
+                        <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                          
+                              <!--Content-->
+                              <div class="modal-content">
+                          
+                                <!--Body-->
+                                <div class="modal-body mb-0 p-0">
+                          
+                                  <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                    <iframe class="embed-responsive-item" scrolling="no" src="<%= user.files_url %>" allowfullscreen></iframe>
+                                  </div>
+                          
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
                                 </div>
                             </form>
                         </div>
@@ -372,6 +437,7 @@
     </footer>
 </body>
     <script>
+<<<<<<< HEAD
         //If user visits for the first time show the Intromodal
         if ('<%= user.active %>' == 0) {
             //Create event listerner for when the page is loaded
@@ -409,6 +475,22 @@
         const webserverOption = document.getElementById('webserver');
         const databaseOption = document.getElementById('database');
         const selectedDatabase = '<%= info.tmp_database %>';
+=======
+	if ('<%= user.active %>' == 0) {
+		setTimeout(function(){ location.reload()}, 2000);
+	}	
+
+	window.onclick = function(event) {
+		if (event.target == document.getElementById('modalUpload')) {
+			fetch(window.location.href + 'filesUploaded');
+ 			console.log('fetched filesUploaded');
+			setTimeout(function(){ location.reload()}, 2000);
+		}
+	}
+
+        document.getElementById('webserver').value = '<%= info.tmp_instance_type %>';
+        document.getElementById('database').value = '<%= info.tmp_database %>';
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
 
         //Show the currently selected options
         webserverOption.value = '<%= info.tmp_instance_type %>';
@@ -417,6 +499,7 @@
         } else {
             databaseOption.value = selectedDatabase;
         }
+<<<<<<< HEAD
 
         //Check if the selected option is wordpress
         if(webserverOption.value === 'Wordpress') {
@@ -425,6 +508,9 @@
         }
 
         //This function is called when the select option changes
+=======
+	
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
         function checkOption() {
             //Define variables for inside the function
             var webserverOption = document.getElementById('webserver');
@@ -498,6 +584,7 @@
             var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 *60));
             var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+<<<<<<< HEAD
             //Get the timer element and put the calculated time inside the element
             timer.innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
             //Check if the instance running time has been expired
@@ -506,6 +593,11 @@
                 instanceButton.click();
             }
             //Check if the time left is less then 30 minutes
+=======
+
+            document.getElementById('timer').innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
             if (diff < 1800000) {
                 //Change the timer color to red
                 timer.style.color = "red";
@@ -514,6 +606,7 @@
             if (diff < 0) {
                 //Clear the interval function
                 clearInterval(x);
+<<<<<<< HEAD
                 //Set the timer text to INSTANCE EXPIRED
                 timer.innerHTML = 'INSTANCE EXPIRED';
             } else {
@@ -531,5 +624,22 @@
         //Insert the footer text
         const footer = document.getElementById('footer');
         footer.innerHTML = '&#169;' + new Date().getFullYear() + ' - ' + window.location.hostname;
+=======
+                document.getElementById('timer').innerHTML = "INSTANCE EXPIRED";
+		console.log('<%= info.status %>');
+		if ('<%= info.status %>' == 1) {
+		        fetch(window.location.href + 'instanceExpired');
+			console.log("Instance expired");
+		}
+	    }
+
+	    if ('<%= info.valid_until %>' == '') {
+		document.getElementById('timer').innerHTML = "";
+	    }
+        }, 1000);
+
+	
+
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
     </script>
 </html>

@@ -29,11 +29,15 @@ let initWebRoutes = (app) => {
 
     router.post("/setOptions", optionsController.setOptions);
     router.post("/startInstance", optionsController.startInstance);
+<<<<<<< HEAD
     router.post("/stopInstance", optionsController.stopInstance);
     
     router.post("/filesUploaded", optionsController.filesUploaded);
     router.post("/submitFiles", optionsController.submitFiles)
     router.get("/introDone", optionsController.introDone);
+=======
+    router.get("/filesUploaded", optionsController.filesUploaded);
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
 
     return app.use("/", router);
 };

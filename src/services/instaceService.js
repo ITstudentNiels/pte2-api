@@ -5,7 +5,12 @@ let getInstance = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
             DBConnection.query(
+<<<<<<< HEAD
                 ' SELECT instances.instance_from, instances.database, instances.instance_type, tmp.database AS tmp_database, tmp.instance_type AS tmp_instance_type, instances.domain_name, instances.valid_until, instances.instance_name, instances.files_uploaded FROM instances INNER JOIN tmp ON tmp.instance_from = instances.instance_from WHERE instances.instance_from = ?;', id,
+=======
+                //' SELECT * FROM `instances` WHERE `instance_from` = ?  ', id,
+                ' SELECT instances.instance_from, instances.database, instances.instance_type, instances.status, tmp.database AS tmp_database, tmp.instance_type AS tmp_instance_type, instances.domain_name, instances.valid_until, instances.instance_name, instances.files_uploaded FROM instances INNER JOIN tmp ON tmp.instance_from = instances.instance_from WHERE instances.instance_from = ?;', id,
+>>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
                 function(err, rows) {
                     if (err) {
                         reject(err)
