@@ -55,23 +55,6 @@ tr:nth-child(even) {
   background-color: #ececec;
 }
 
-<<<<<<< HEAD
 .btn:active {
   box-shadow: 0 0 0 0.2rem #c274c2 !important;
-=======
-.files-pass {
-	color: #663366;
-	background-color: #663366;
-}
-
-.files-pass:hover {
-	color: #495057;
-	background-color: white;
-}
-
-.alert-color {
-       color: #663366;
-       background-color: #a34ea3;
-       border-color: #663366;
->>>>>>> 99fb57ed01f86315e6c19a719d8e03a94719a3ac
 }
