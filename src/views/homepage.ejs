@@ -1,235 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Homepage</title>
+        <!-- Website title -->
+        <title>Self Service Portal</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="robots" content="noindex,nofollow">
+        <!-- Set Favicon -->
+        <link rel="shortcut icon" href="/images/favicon.ico" />        
+        <!-- Import css style -->
         <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <!-- Import bootstrap css -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Import jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Import popper js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <!-- Import Bootstrap 4.0.0 js -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="container">
-            <div class="row justify-content-start">
-                <div class="col-8 pt-3">Dashboard</div>
-                <div class="col-3 pt-3 text-right">
-                    <form method="POST" action="/logout">
-                        <button type="submit" class="btn btn-login">Log out</button>
-                    </form>    
+            <!-- Header-->
+            <header>
+                <div class="row">
+                    <!-- Header title -->
+                    <div class="col-8 pt-3">
+                        <h3>Self Service Portal</h3>
+                    </div>
+                    <!-- Logout button-->
+                    <div class="col-3 pt-3 text-right">
+                        <form method="POST" action="/logout">
+                            <button type="submit" class="btn btn-color">Log out</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </header>
 
-            <div class="row mt-4">
+            <!-- Sub-header -->
+            <div class="row mt-2">
+                <!-- Greeting the user -->
                 <div class="col-md-5">
-                    <h2>Welcome <%= user.fullname%></h2>
+                    <br><h3>Welcome <%= user.fullname%></h3>
                 </div>
+                <!-- Show an alert message if exists -->
                 <div class="col-md-6">
-                    <% if(errors != "") { %>
-                        <% errors.forEach((item) => { %>
-                            <div class="alert alert-danger">
-                                <%- item %>
-                            </div>
-                        <% }); %>
-                    <% } %>
-                </div>
-            </div>
-
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <div class="form-control">
-                        <h4>Set instance type/database</h4>
-                        <p>Please select an instace type and click the Save type button.</p>
-
-                        <form method="POST" action="/setOptions" onchange="checkOption();">
-                            <label for="webserver">Select an instance type:</label>
-                            <select name="webserver" id="webserver">
-                                <option value="Apache">Apache2</option>
-                                <option value="Wordpress">Wordpress</option>
-                                <option value="NodeJS">NodeJS</option>
-                            </select>
-                            <br>
-                            <label for="databasee">Select a database:</label>
-                            <select name="database" id="database">
-                                <option value="MySQL">MySQL</option>
-                                <option value="MongoDB">MongoDB</option>
-                                <option value="?">?</option>
-                            </select>
-                            <br>
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-login">Save type</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-5">
-                    <div class="form-control">
-                        <h4>Upload files</h4>
-                        <p>Click the link below to upload your website files. NOTE: when you selected Wordpress as instance type you don't need to upload files.</p>
-                        
-                        <button type="button" class="btn btn-login" data-toggle="modal" data-target="#modalUpload">Upload files</button>
-                        <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                          
-                              <!--Content-->
-                              <div class="modal-content">
-                          
-                                <!--Body-->
-                                <div class="modal-body mb-0 p-0">
-                          
-                                  <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                                    <iframe class="embed-responsive-item" src="<%= user.files_url %>" allowfullscreen></iframe>
-                                  </div>
-                          
-                                </div>
-                          
-                          
-                              </div>
-                              <!--/.Content-->
-                          
-                            </div>
-                          </div>
-
-                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Launch demo modal
-                        </button>
-                        
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content" >
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                    <% if (alert != "") { %>
+                            <div class="alert <%- alert[1] %> alert-dismissable fade show" id="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><%- alert[2] %></span>
                                 </button>
-                                </div>
-                                <div class="modal-body"  style="margin:10px;padding: 0px;">
-                                    <iframe src="<%= user.files_url %>" frameborder="0" style="overflow: hidden; height: 100%; width: 100%;"></iframe>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
+                                <%- alert[0] %>
                             </div>
-                            </div>
-                        </div> -->
-
-                    </div>
+                        <% }; %>
                 </div>
             </div>
-            
-            <div class="row mt-4">
-                <div class="col-md-6 offset-md-0">
-                    <div class="form-control">
-                        <h4>Start instance</h4>
-                        <p>You can start a new instance after the old one has expired. When you start an instance it will be available for 2 hours.</p>
-                        <p>When you check this box all the data on your old instance will be removed and the newly uploaded data will be used.</p>
-                        <form method="POST" action="/startInstance">
-                                <label for="checkbox">Remove data?</label>
-                                <input type="checkbox" id="checkbox" name="checkbox" value="remove">
-                            
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-login float-right">Start instance</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                
-                <div class="col-5">
-                    <div class="form-control">
-                        <h4>Instance timer</h4>
-                        <p>We use a fair use policy so everyone had a chance to host there project. Therefor we choose to use shutdown every instance after 2 hours.</p>
-                        <div class="d-flex justify-content-center">
-                            <p id="timer"></p>
+
+            <!-- Row -->
+            <div class="row">
+                <!-- Left column -->
+                <div class="col-md-6">
+                    <!-- Preference selection card -->
+                    <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header">
+                            Preference selection
                         </div>
-                    </div>    
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <!-- Information about the preference selection options -->
+                            <p>Below you can select your preferred hosting application with a database if required. There are several options provided and you can select various combinations.</p>
+                            
+                            <!-- Divider -->
+                            <div class="divider d-flex align-items-center my-1"></div>
+                            
+                            <!-- Form where users can select there preference -->
+                            <form method="POST" action="/setOptions" onchange="checkOption();" class="mt-2">
+                                <!-- Select attribute for the hosting application -->
+                                <label for="webserver">Hosting application:</label>
+                                <select name="webserver" id="webserver">
+                                    <option value="Apache">Apache2</option>
+                                    <option value="Wordpress">Wordpress</option>
+                                    <option value="NodeJS">NodeJS</option>
+                                </select>
+                                <!-- Break to space the two select attributes-->
+                                <br>
+                                <!-- Select attribute for the database -->
+                                <label for="database">Database:</label>
+                                <select name="database" id="database">
+                                    <option value="MySQL">MySQL</option>
+                                    <option value="MongoDB">MongoDB</option>
+                                    <option value="nDB">No database</option>
+                                </select>
+                                <!-- Button to submit the form -->
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-color">Save type</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Break to space the two cards-->
+                    <br>
+
+                    <!-- Project files card -->
+                    <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header">
+                            Project files
+                        </div>
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <!-- Information about the upload methods -->
+                            <p>We provide two methods to upload your project files. Using your github repository link or by file drop upload.</p>
+                            <!-- Select attribute to select the desired upload method -->
+                            <label for="uploadMethod">Select your desired upload method:</label>
+                            <select name="uploadMethod" id="uploadMethod" onchange="checkUploadmethod();">
+                                <option value="github">Github</option>
+                                <option value="filedrop">File drop</option>
+                            </select>
+
+                            <!-- Divider -->
+                            <div class="divider d-flex align-items-center my-1"></div>
+
+                            <!-- Information for the github upload method -->
+                            <div id="github">
+                                <p>Submit the url of the Github repository and click the submit files button</p>
+                                <!-- Form where the user can insert the github url and submit the form -->
+                                <form method="POST" action="/submitFiles">
+                                    <div class="input-group flex-nowrap">
+                                        <span class="input-group-text">Github url</span>
+                                        <input type="url" class="form-control" name="github-url" placeholder="https://github.com/username/repo/project.git" required>
+                                    </div>
+                                    <br>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-color">Submit files</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Information for the filedrop upload method -->
+                            <div id="filedrop" style="display: none;">
+                                <p>The upload is password protected, hover the fontys logo to show the password. Copy the password and click the Upload files button.</p>
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text">Password</span>
+                                    <input type="password" id="password" class="form-control" value="<%= user.files_pass %>" data-toggle="password">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" aria-label="Show password" onclick="showPassword();">
+                                    </div>
+                                </div>
+                                <br>
+                                <!-- Button to show the filedrop iframe -->
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-color" data-toggle="modal" data-target="#modalUpload">Upload files</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Break to space the two cards -->
+                    <br>
+
+                    <!-- Instance status card-->
+                    <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header">
+                            Instance status
+                        </div>
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <!-- Information about how to start an instance-->
+                            <p>You can start a new instance after the old one has expired. When you start an instance it will be available for 2 hours.</p>
+                            <p>When you check this box all the data on your old instance will be removed and the newly uploaded data will be used.</p>
+                            <!-- Form to start the instance -->
+                            <form method="POST" action="/startInstance" id="instanceForm">
+                                    <label for="checkbox">Remove data?</label>
+                                    <input type="checkbox" id="checkbox" name="checkbox" value="remove">
+                                
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-success float-right" id="instanceButton">Start instance</button>
+                                </div>
+                            </form>    
+                        </div>
+                    </div>
+
+                    <!-- Break to space the two cards -->
+                    <br>
+
+                </div>
+
+
+                <!-- Right column -->
+                <div class="col-md-5">   
+                    <!-- Instance information card -->
+                    <div class="card">
+                        <!-- Card header-->
+                        <div class="card-header">
+                            Environment information
+                        </div>
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <!-- Table to inform the user with information about there environment -->
+                            <table>
+                                <!-- Domainname-->
+                                <tr>
+                                    <td>Domainname</td>
+                                    <td><a href="<%= info.domain_name %>" target="_blank"><%= info.domain_name %></a></td>
+                                </tr>
+                                <!-- Hosting application -->
+                                <tr>
+                                    <td>Hosting application</td>
+                                    <td><%= info.instance_type %></td>
+                                </tr>
+                                <!-- Database -->
+                                <tr>
+                                    <td>Database</td>
+                                    <td><%= info.database %></td>
+                                </tr>
+                                <!-- Total files uploaded -->
+                                <tr>
+                                    <td>Total files uploaded</td>
+                                    <td><%= info.files_uploaded %></td>
+                                </tr>
+                                <!-- SSL installed? -->
+                                <tr>
+                                    <td>SSL installed?</td>
+                                    <td>yes</td>
+                                </tr>
+                                <!-- Database host -->
+                                <tr>
+                                    <td>Database host</td>
+                                    <td>localhost</td>
+                                </tr>
+                                <!-- Database username -->
+                                <tr>
+                                    <td>Database username</td>
+                                    <td>test</td>
+                                </tr>
+                                <!-- Database password -->
+                                <tr>
+                                    <td>Database password</td>
+                                    <td>test</td>
+                                </tr>
+                            </table>    
+                        </div>
+                    </div>     
+
+                    <!-- Break to space the two cards-->
+                    <br>
+
+                    <!-- Instance timer card -->
+                    <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header">
+                            Instance timer
+                        </div>
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <!-- Information about the instance timer -->
+                            <p>We use a fair use policy so everyone had a chance to host there project. Therefor we choose to use shutdown every instance after 2 hours.</p>
+                            <!-- Element to show the timer -->
+                            <div class="d-flex justify-content-center">
+                                <p id="timer"></p>
+                            </div>    
+                        </div>
+                    </div>
+
+                    <!-- Break to space the two cards -->
+                    <br>
+
+                    <div class="card">
+                        <div class="card-header">
+                            Monitoring
+                        </div>
+                        <div class="card-body">
+                            <p>Monitoring view here!</p>
+                        </div>
+                    </div>
+
+                    <!-- Break to space the two cards -->
+                    <br>
+
                 </div>
             </div>
 
-            <div class="row mt-4">
-                <div class="col-md-5 off-set-md-0">
-                    <div class="form-control">
-                        <h4>Instance information</h4>
-                        <table>
-                            <tr>
-                                <td>Domainname</td>
-                                <td><a href="<%= info.domain_name %>"><%= info.domain_name %></a></td>
-                            </tr>
-                            <tr>
-                                <td>Instance Type</td>
-                                <td><%= info.instance_type %></td>
-                            </tr>
-                            <tr>
-                                <td>Database</td>
-                                <td><%= info.database %></td>
-                            </tr>
-                            <tr>
-                                <td>Total files uploaded</td>
-                                <td><%= info.files_uploaded %></td>
-                            </tr>
-                            <tr>
-                                <td>SSL installed?</td>
-                                <td>yes</td>
-                            </tr>
-                        </table>
+            <!-- Files upload modal -->
+            <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <!--Content-->
+                  <div class="modal-content">
+                    <!--Body-->
+                    <div class="modal-body mb-0 p-0">
+                      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                            <!-- Iframe element -->
+                            <!-- <iframe class="embed-responsive-item" src="<%= user.files_url %>" allowfullscreen></iframe> -->
+                            <form class="d-none" method="post" action="/filesUploaded">
+                                <button type="submit" id="uploadFiles"></button>
+                            </form>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
 
-                <div class="col-6">
-                    <div class="form-control">
-                        <h4>Monitoring</h4>
-                        
-                        <!-- <iframe src="http://192.168.12.149:3000/d-solo/rYdddlPWk/node-exporter-full?orgId=1&refresh=1m&from=1634398838006&to=1634485238006&theme=light&panelId=20" width="450" height="200" frameborder="0"></iframe>                     -->
-                    </div>
+            <!-- Website intro -->
+            <div class="modal fade" id="modalIntro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-lg" role="document">         
+                  <!--Content-->
+                  <div class="modal-content">
+                      <!--Body-->
+                      <div class="modal-body mb-10 p-10">
+                        <!-- Modal's first view -->
+                        <div id="modalBodyFirst">
+                            <!-- Modal header -->
+                            <div class="modal-header">
+                                <h4 style="color: #663366; font-weight: bold;">Welcome on the FHICT selfservice portal.</h4>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <p>By using the self-service portal, it is very easy to roll out your created web project and host it to test the functionality.</p>
+                                <p>After just 3 steps, you hosted your project.</p>
+
+                                <h3><span class="badge rounded-pill btn-color">Step 1</span></h3>
+                                    <p>The first step is selecting the instance type and if needed a database. </p>
+
+                                <h3><span class="badge rounded-pill btn-color">Step 2</span></h3>
+                                    <p>The second step is uploading your project files.</p>
+
+                                <h3><span class="badge rounded-pill btn-color">Step 3</span></h3>
+                                    <p>The third and last step is starting the instance.</p>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-color" id="modalIntroFirst">Next</button>
+                            </div>
+                        </div>
+                        <!-- Modal's second view -->
+                        <div id="modalBodySecond" style="display: none;">
+                            <!-- Modal header -->
+                            <div class="modal-header">
+                                <h4 style="color: #663366; font-weight: bold;">Welcome on the FHICT selfservice portal.</h4>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <p>Using the self-service portal it is possible to host your project for a time period of 2 hours. After that, your instance will be stopped and you may launch a new instance if necessary.</p>
+                                <p>As the self-serve portal is used by a large number of students, we have a fair dealing policy, please follow the rules and adhere to the network.</p>
+    
+                                <h5>Fair use policy</h5>
+    
+                                <ol>
+                                    <li>Your instance will be stopped after 2 hours, if you have finished before expiry of the timer, stop the instance.</li>
+                                    <li>Use only the self-service portal for school projects! Your account'll be blocked if you don't.</li>
+                                </ol>
+                            </div>
+                            <!-- Modal footer-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-color" id="modalIntroSecond">Start exploring</button>
+                            </div>
+                        </div>
+                    </div>         
                 </div>
             </div>
-
-        </div> 
-    </body>
+        </div>
+        
+    </div> 
+    <footer class="bg-ligth text-center text-lg-start">
+        <div class="text-center p-3" style="background-color: #663366; color: white;">
+            <span id="footer"></span>
+        </div>
+    </footer>
+</body>
     <script>
-        document.getElementById('webserver').value = '<%= info.tmp_instance_type %>';
-        document.getElementById('database').value = '<%= info.tmp_database %>';
+        //If user visits for the first time show the Intromodal
+        if ('<%= user.active %>' == 0) {
+            //Create event listerner for when the page is loaded
+            window.addEventListener('load', function(event) {
+                //When the page is loaded show the intro modal
+                $('#modalIntro').modal('show');
+            });
+        };  
+        
+        //Define multiple variables for showing the intro modal and the data
+        const modalIntroFirst = document.getElementById('modalIntroFirst');
+        const modalIntroSecond = document.getElementById('modalIntroSecond');
+        const modalFirstBody = document.getElementById('modalBodyFirst');
+        const modalSecondBody = document.getElementById('modalBodySecond');
 
-        if(document.getElementById('webserver').value === 'Wordpress') {
-            document.getElementById('database').disabled = true;
+        //Event listener to check if the next button is clicked
+        modalIntroFirst.addEventListener('click', function() {
+            //When clicked change display to none and block
+            modalFirstBody.style.display = 'none';
+            modalSecondBody.style.display = 'block';
+        });
+        
+        //Event listener for when the start exploring button is clicked
+        modalIntroSecond.addEventListener('click', function() {
+            //Make get request when the Intro had been completed
+            fetch(window.location.href + '/introDone')
+            //Reload the window
+            .then(() => {document.location.reload()});
+        });
+
+        //Remove alert after few seconds
+        $('#alert').delay(20000).fadeOut(500);
+
+        //Define multiple variables for the preference selection  
+        const webserverOption = document.getElementById('webserver');
+        const databaseOption = document.getElementById('database');
+        const selectedDatabase = '<%= info.tmp_database %>';
+
+        //Show the currently selected options
+        webserverOption.value = '<%= info.tmp_instance_type %>';
+        if (!selectedDatabase) {
+            databaseOption.value = 'nDB';
+        } else {
+            databaseOption.value = selectedDatabase;
         }
 
-        function checkOption() {
-            var instanceOption = document.getElementById('webserver');
-            var databaseOption = document.getElementById('database');
+        //Check if the selected option is wordpress
+        if(webserverOption.value === 'Wordpress') {
+            //Disable the database option
+            databaseOption.disabled = true;
+        }
 
-            if (instanceOption.value == 'Wordpress') {
+        //This function is called when the select option changes
+        function checkOption() {
+            //Define variables for inside the function
+            var webserverOption = document.getElementById('webserver');
+            var databaseOption = document.getElementById('database');
+            //Check if the selected option is wordpress
+            if (webserverOption.value == 'Wordpress') {
+                //Disable the database option
                 databaseOption.disabled = true;
             }
             else {
+                //Enable the database option
                 databaseOption.disabled = false;
             }
         }
 
-        var countDownTime = new Date('<%= info.valid_until %>').getTime();
+        //Define multiple variables for the upload method  
+        const optionUploadmethod = document.getElementById('uploadMethod');
+        const githubUpload = document.getElementById('github');
+        const filedropUpload = document.getElementById('filedrop');
 
+        //This function is called when the select option changes
+        function checkUploadmethod() {
+            //Check wat the newly selected option is and show the information
+            if (optionUploadmethod.value == 'github') {
+                githubUpload.style.display = 'block';
+                filedropUpload.style.display = 'none';
+            }
+            else if (optionUploadmethod.value == 'filedrop') {
+                filedropUpload.style.display = 'block';
+                githubUpload.style.display = 'none';
+            }
+        }
+
+        checkUploadmethod();
+
+        //This function is called when the checkbox is changed
+        function showPassword() {
+            var passwordField = document.getElementById('password');
+
+            if(passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
+
+        //Detect when there is an click event
+        window.onclick = async function(event) {
+            //Check if the click was outside the modal
+            if (event.target == document.getElementById('modalUpload')) {
+                //Click the uploadFiles button
+                document.getElementById('uploadFiles').click();
+            }
+        }
+
+        //Variable where the valid until time is saved
+        const validUntil = new Date('<%= info.valid_until %>').getTime();
+        //Save instance start/stop elements in variables
+        const instanceButton = document.getElementById('instanceButton');
+        const instanceForm = document.getElementById('instanceForm'); 
+
+        //Create an interval function
         var x = setInterval(function() {
+            //Instantiate a variable for the timer element
+            var timer = document.getElementById('timer');
+            //Instantiate a variable for the current time 
             var now = new Date().getTime();
-
-            var diff = countDownTime - now;
-
+            //Calculate the difference between the valid until time and current
+            var diff = validUntil - now;
+            //Calculate the hours, minutes, seconds left
             var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 *60));
             var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('timer').innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
-            console.log(diff);
+            //Get the timer element and put the calculated time inside the element
+            timer.innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+            //Check if the instance running time has been expired
+            if (diff < 1000 && diff > 0) {
+                //When timeleft is 1 seconds stop the instance
+                instanceButton.click();
+            }
+            //Check if the time left is less then 30 minutes
             if (diff < 1800000) {
-                document.getElementById('timer').style.color = "red";
+                //Change the timer color to red
+                timer.style.color = "red";
             }
-
+            //Check if there is no time left
             if (diff < 0) {
+                //Clear the interval function
                 clearInterval(x);
-                document.getElementById('timer').innerHTML = "INSTANCE EXPIRED";
+                //Set the timer text to INSTANCE EXPIRED
+                timer.innerHTML = 'INSTANCE EXPIRED';
+            } else {
+                //When the instance is running 
+                //Change the button text to stop instance
+                instanceButton.innerHTML = 'Stop Instance';
+                //Change the button color
+                instanceButton.className = 'btn btn-danger';
+                //Change the form action so the instance stops when clicked
+                instanceForm.action = '/stopInstance'; 
             }
+            //Run this function every second
         }, 1000);
+
+        //Insert the footer text
+        const footer = document.getElementById('footer');
+        footer.innerHTML = '&#169;' + new Date().getFullYear() + ' - ' + window.location.hostname;
     </script>
 </html>

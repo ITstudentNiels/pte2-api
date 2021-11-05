@@ -1,13 +1,13 @@
 {
-  "name": "tutorial-youtube",
+  "name": "selfserviceportal",
   "version": "1.0.0",
-  "description": "Building a login system with NodeJS",
+  "description": "Self Service Portal",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node src/server.js"
   },
-  "author": "hary pham",
+  "author": "PTE2",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -23,7 +23,9 @@
     "nextcloud-node-client": "^1.8.1",
     "node-ansible": "^0.5.5",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "randomstring": "^1.2.1",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.3",

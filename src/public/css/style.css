@@ -1,3 +1,4 @@
+/* Styling for the divider */
 .divider:after,
 .divider:before {
   content: "";
@@ -5,15 +6,8 @@
   height: 1px;
   background: #eee;
 }
-.h-custom {
-  height: calc(100% - 73px);
-}
-@media (max-width: 450px) {
-  .h-custom {
-    height: 100%;
-  }
-}
 
+/* Styling for the image at the login page */
 .image {
     margin-top: 70px;
     content: url("../images/logo.png");
@@ -25,19 +19,23 @@
     border-radius: 3px;
 }
 
-.btn-login {
+/* Styling for the button on the pages */
+.btn-color {
     color: white;
     background-color: #663366;
 }
 
-.btn-login:hover {
+/* Styling for when the buttons are hovered */
+.btn-color:hover {
   background: #a34ea3;
 }
 
+/* Styling for the a element on the self service portal*/
 a {
   color: #663366 !important;
 }
 
+/* Styling for the environment information */
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -55,4 +53,8 @@ td:nth-child(odd) {
 
 tr:nth-child(even) {
   background-color: #ececec;
+}
+
+.btn:active {
+  box-shadow: 0 0 0 0.2rem #c274c2 !important;
 }

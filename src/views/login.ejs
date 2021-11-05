@@ -1,63 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Selfservice Login</title>
+    <title>Self Service Portal Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="shortcut icon" href="/images/favicon.ico" />        
+    <!-- Import css style -->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Import bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Import jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Import popper js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- Import Bootstrap 4.0.0 js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-    <section class="vh-100">
-        <div class="container-fluid h-custom">
-          <div class="row d-flex justify-content-center align-items-center vh-100">
-            <div class="col-md-9 col-lg-6 col-xl-5">
-              <img class="image" 
-                alt="Sample image">
-            </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <div>
-                    <% if(errors != "") { %>
-                        <% errors.forEach((item) => { %>
-                            <div class="alert alert-danger">
-                                <%- item %>
-                            </div>
-                        <% }); %>
-                    <% } %>
-                </div>
-              <form method="POST" action="/login">
-                <div class="d-flex align-items-center my-4">
-                    <h1 class="text-center fw-bold mx-3 mb-0">Selfservice Login</h1>
-                  </div>
-
-                <div class="divider d-flex align-items-center my-4">
-                  <p class="text-center fw-bold mx-3 mb-0">Sign in</p>
-                </div>
-      
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <input type="email" id="email" name="email" class="form-control form-control-lg"
-                    placeholder="Enter a valid email address" value="test1@test.com" />
-                </div>
-      
-                <!-- Password input -->
-                <div class="form-outline mb-3">
-                  <input type="password" id="passoword" name="password" class="form-control form-control-lg"
-                    placeholder="Enter password" value="test" />
-                </div>
-      
-      
-                <div class="text-center text-lg-start mt-4 pt-2">
-                  <button type="submit" class="btn btn-login btn-lg"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                </div>
-      
-              </form>
-            </div>
-          </div>
+  <section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center vh-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img class="image" alt="Login page image">
         </div>
-      </section>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <div>
+            <% if(errors != "") { %>
+              <% errors.forEach((item) => { %>
+                  <div class="alert alert-danger">
+                      <%- item %>
+                  </div>
+              <% }); %>
+            <% } %>
+          </div>
+          <form method="post" action="/login">
+            <div class="d-flex align-items-center my-4">
+              <h1 class="text-center fw-bold mx-3 mb-0">Self Service Portal</h1>
+            </div>
+
+            <div class="divider d-flex align-items-center my-4">
+              <p class="text-center fw-bold mx-3 mb-0">Sign in</p>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Enter a valid email address" />
+            </div>
+
+            <div class="form-outline mb-3">
+              <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Enter password" />
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-color btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-light text-center text-lg-start fixed-bottom">
+    <div class="text-center p-3" style="background-color: #663366; color: white;">
+        <span id="footer"></span>
+    </div>
+  </footer>   
+   
 </body>
+<script>
+  //Insert the footer text
+  const footer = document.getElementById('footer');
+  footer.innerHTML = '&#169;' + new Date().getFullYear() + ' - ' + window.location.hostname;
+</script>
 </html>

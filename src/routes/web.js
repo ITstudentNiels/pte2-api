@@ -10,10 +10,11 @@ import initPassportLocal from "../controllers/passportLocalController";
 // Init all passport
 initPassportLocal();
 
+//Init router and save as variable
 let router = express.Router();
 
 let initWebRoutes = (app) => {
-    router.get("/", loginController.checkLoggedIn, homePageController.handleHelloWorld);
+    router.get("/", loginController.checkLoggedIn, homePageController.handleHomepage);
     router.get("/login",loginController.checkLoggedOut, loginController.getPageLogin);
     router.post("/login", passport.authenticate("local", {
         successRedirect: "/",
@@ -21,13 +22,18 @@ let initWebRoutes = (app) => {
         successFlash: true,
         failureFlash: true
     }));
-    
-    router.get("/register", registerController.getPageRegister);
-    router.post("/register", auth.validateRegister, registerController.createNewUser);
+  
+    //router.get("/register", registerController.getPageRegister);
+    //router.post("/register", auth.validateRegister, registerController.createNewUser);
     router.post("/logout", loginController.postLogOut);
 
     router.post("/setOptions", optionsController.setOptions);
     router.post("/startInstance", optionsController.startInstance);
+    router.post("/stopInstance", optionsController.stopInstance);
+    
+    router.post("/filesUploaded", optionsController.filesUploaded);
+    router.post("/submitFiles", optionsController.submitFiles)
+    router.get("/introDone", optionsController.introDone);
 
     return app.use("/", router);
 };
