@@ -1,10 +1,13 @@
 import instanceService from "../services/instaceService";
 import checkLogin from "../services/loginCheck";
+import apiRequest from "../services/apiRequest";
 
 //Function executed from routes/web.js 
 let handleHomepage = async (req, res) => {
     //Variable that contains information about the instance from the current user
     let instanceInfo = await instanceService.getInstance(req.user.id);
+//    let instanceStats = await apiRequest.instanceStats(req.user.student_id);
+//	console.log('test', instanceStats);
     //If the information is empty set the variable to empty information
     if (!instanceInfo) {
         instanceInfo = {
@@ -16,7 +19,7 @@ let handleHomepage = async (req, res) => {
         }
     }
     //Check whether the user already logged in once
-    await checkLogin.check(req.user.id, req.user.student_id);
+//    await checkLogin.check(req.user.id, req.user.student_id);
     
     //Request the alert 
     let alertMessage = req.flash("alert");
@@ -32,6 +35,7 @@ let handleHomepage = async (req, res) => {
         user: req.user,
         info: instanceInfo,
         alert: alertMessage,
+//	instanceStats: instanceStats,
     })
 };
 

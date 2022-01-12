@@ -58,3 +58,8 @@ tr:nth-child(even) {
 .btn:active {
   box-shadow: 0 0 0 0.2rem #c274c2 !important;
 }
+
+div .card {
+  margin-bottom: 1.5rem;
+}
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Website title -->
+        <title>Monitoring Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="robots" content="noindex,nofollow">
+        <!-- Set Favicon -->
+        <link rel="shortcut icon" href="/images/favicon.ico" />        
+	<meta http-equiv="refresh" content="10">
+        <!-- Import bootstrap css -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Import jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Import popper js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <!-- Import Bootstrap 4.0.0 js -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Import Google charts -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>
+	    <table class="columns">
+	      <tr>
+	        <td><div id="chart_cpu"></div></td>
+	        <td><div id="chart_ram"></div></td>
+	      </tr>
+	    </table>
+    </body>
+    <script type="text/javascript">
+    google.charts.load('current', {'packages':['gauge']});
+
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var dataCpu = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Cpu', <%= instanceStats[1] %>],
+        ]);
+        var dataRam = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Memory', <%= instanceStats[0] %>],
+        ]);
+
+
+
+
+        var optionsCpu = {
+          width: 400, height: 120,
+          redFrom: 90, redTo: 100,
+          yellowFrom: 80, yellowTo: 90,
+          minorTicks: 5
+        };
+	var optionsRam = {
+          width: 400, height: 120,
+          redFrom: 900, redTo: 1000,
+          yellowFrom: 800, yellowTo: 900,
+          minorTicks: 5,
+	  max: 1000
+        };
+
+
+
+        var chartCpu = new google.visualization.Gauge(document.getElementById('chart_cpu'));
+        var chartRam = new google.visualization.Gauge(document.getElementById('chart_ram'));
+
+        chartCpu.draw(dataCpu, optionsCpu);	
+        chartRam.draw(dataRam, optionsRam);	
+     }
+            
+    </script>
+</html>
+

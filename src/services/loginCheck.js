@@ -5,7 +5,7 @@ var request = require('request');
 var rs = require('randomstring');
 
 //Executed from controllers/homePageController
-let check = (id, studentID) => {
+let check = async (id, studentID) => {
     //Try to get the current user status
     try {
         DBConnection.query(
@@ -15,7 +15,7 @@ let check = (id, studentID) => {
 
                 //Check if the user account is not active
                 if (!result[0].active) {
-                    
+			console.log('not active');
                     //Instantiate the connection details
                     const server = new nx.Server({ 
                         basicAuth: { 
@@ -32,19 +32,18 @@ let check = (id, studentID) => {
                     //Share the folder that is created
 			        const share = await client.createShare({ fileSystemElement: folder, sharePermission: 31 });
                     //Generate a password for the share
-                    const sharePassword = rs.generate({ length: 8 });
+                    const sharePassword = rs.generate({ length: 10 });
                     //Set the generated password 
-                    share.setPassword(sharePassword); 
+		    share.setPassword(sharePassword); 
                     //Gather the share id
                     const shareID = share.memento.id
                     //Create the share link with the domain and share token
                     const shareLink = 'https://' + process.env.NX_DOMAIN + '/index.php/s/' + share.memento.token;
-
                     //The following code is to set the share as file drop
                     //Define the header for the API request
                     var headers = {
                         'OCS-APIRequest': 'true',
-		                'Content-Type': 'application/json'
+	                'Content-Type': 'application/json'
                     };
                     //Define the options for the request
                     var options = {
@@ -52,7 +51,8 @@ let check = (id, studentID) => {
                         method: 'PUT',
                         headers: headers,
                         body: JSON.stringify({
-			                "permissions": 4
+			                "permissions": 4,
+//					"password": sharePassword
 		                }),
                         auth: {
                             'user': process.env.NX_USERNAME,
@@ -63,20 +63,19 @@ let check = (id, studentID) => {
                     //Function to handle the request error, response and body
                     function callback(error, response, body) {
                         if (!error && response.statusCode == 200) {
-                            console.log(body);
+                            console.log('Nextcloud share made.');
                         }
                     }
-
+		    const generatedPassword = rs.generate({ length: 10 });
+	            //Update the users, instance and tmp database table 
+	            DBConnection.query(
+        		'UPDATE `users` SET active = ?, files_url = ?, files_pass = ? WHERE `id` = ?; INSERT INTO `instances` (instance_name, domain_name, port, instance_from, username, password) VALUES (?, ?, ?, ?, ?, ?); INSERT INTO `tmp` (instance_from) VALUES (?)', ['1', shareLink, sharePassword, id, studentID, 'https://' + studentID + '.pte2.tech', parseInt(process.env.START_PORT) + parseInt(id), id, studentID, generatedPassword, id],
+	                function (err, result) {
+                		if (err) throw err;
+			}
+        	    )
                     //REMOVE! await request(options, callback); 
 
-                    //Update the users, instance and tmp database table 
-                    DBConnection.query(
-                        'UPDATE `users` SET `active` = ?, files_url = ?, files_pass = ? WHERE `id` = ?; INSERT INTO `instances` (instance_name, domain_name, instance_from) VALUES (?, ?, ?); INSERT INTO `tmp` (instance_from) VALUES (?)', ['1', shareLink, sharePassword, id, studentID, 'https://' + studentID + '.pte2.tech', id, id],
-                        function (err, result) {
-                            if (err) throw err;
-                        }
-                    )
-                    
                     //Wait 5 seconds before executing the api request
 	                await new Promise(resolve => setTimeout(resolve, 5000));
                     //Make the API request
@@ -84,8 +83,9 @@ let check = (id, studentID) => {
                 }
             }
         );
+	return await true;
     } catch (err) {
-        throw err
+        return false;
     }
 };
 

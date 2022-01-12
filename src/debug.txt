@@ -1,0 +1,1131 @@
+[TAILING] Tailing last 15 lines for [all] processes (change the value with --lines option)
+/home/web00-admin/.pm2/pm2.log last 15 lines:
+PM2        | 2021-11-22T14:24:38: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:24:38: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:24:38: PM2 log: pid=4722 msg=process killed
+PM2        | 2021-11-22T14:24:38: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:24:38: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:26:23: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:26:23: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:26:23: PM2 log: pid=4831 msg=process killed
+PM2        | 2021-11-22T14:26:23: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:26:23: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:27:39: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:27:40: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:27:40: PM2 log: pid=5100 msg=process killed
+PM2        | 2021-11-22T14:27:40: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:27:40: PM2 log: App [server:0] online
+
+/home/web00-admin/.pm2/logs/server-error.log last 15 lines:
+0|server   | 
+0|server   | ReferenceError: reponse is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:2)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+0|server   | /home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:128
+0|server   | 	return reponse.body.length;
+0|server   | 	^
+0|server   | 
+0|server   | ReferenceError: reponse is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:124:2)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+/home/web00-admin/.pm2/logs/server-out.log last 15 lines:
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:25:437
+0|server   |     at new Promise (<anonymous>)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:25:99
+0|server   |     at submitFiles (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:167:5)
+0|server   |     at Layer.handle [as handle_request] (/home/web00-admin/pte2-api-V2/pte2-api/node_modules/express/lib/router/layer.js:95:5)
+0|server   | 
+0|server   | > selfserviceportal@1.0.0 start
+0|server   | > nodemon --exec babel-node src/server.js
+0|server   | 
+0|server   | [33m[nodemon] 2.0.14[39m
+0|server   | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server   | [33m[nodemon] watching path(s): *.*[39m
+0|server   | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+
+0|server  | > selfserviceportal@1.0.0 start
+0|server  | > nodemon --exec babel-node src/server.js
+0|server  | [33m[nodemon] 2.0.14[39m
+0|server  | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server  | [33m[nodemon] watching path(s): *.*[39m
+0|server  | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server  | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server  | Building a login system with NodeJS is running on port 8080!
+0|server  | ReferenceError: dataLength is not defined
+0|server  |     at _callee5$ (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:212:91)
+0|server  |     at tryCatch (/home/web00-admin/pte2-api-V2/pte2-api/node_modules/babel-polyfill/node_modules/regenerator-runtime/runtime.js:65:40)
+0|server  |     at Generator.invoke [as _invoke] (/home/web00-admin/pte2-api-V2/pte2-api/node_modules/babel-polyfill/node_modules/regenerator-runtime/runtime.js:303:22)
+0|server  |     at Generator.prototype.<computed> [as next] (/home/web00-admin/pte2-api-V2/pte2-api/node_modules/babel-polyfill/node_modules/regenerator-runtime/runtime.js:117:21)
+0|server  |     at step (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:25:191)
+0|server  |     at /home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:25:437
+0|server  |     at new Promise (<anonymous>)
+0|server  |     at /home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:25:99
+0|server  |     at submitFiles (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:167:5)
+0|server  |     at Layer.handle [as handle_request] (/home/web00-admin/pte2-api-V2/pte2-api/node_modules/express/lib/router/layer.js:95:5)
+0|server  | <ref *1> Request {
+0|server  |   _events: [Object: null prototype] {
+0|server  |     error: [Function: bound ],
+0|server  |     complete: [Function: bound ],
+0|server  |     pipe: [Function (anonymous)]
+0|server  |   },
+0|server  |   _eventsCount: 3,
+0|server  |   _maxListeners: undefined,
+0|server  |   method: 'POST',
+0|server  |   headers: {
+0|server  |     'Content-Type': 'application/json',
+0|server  |     host: '192.168.0.6:8000',
+0|server  |     authorization: 'Basic YWRtaW46ZGFua2pld2VscGV0ZXI2Mg==',
+0|server  |     'content-length': 36
+0|server  |   },
+0|server  |   body: '{"data":{"student_number":"460499"}}',
+0|server  |   callback: [Function (anonymous)],
+0|server  |   readable: true,
+0|server  |   writable: true,
+0|server  |   explicitMethod: true,
+0|server  |   _qs: Querystring {
+0|server  |     request: [Circular *1],
+0|server  |     lib: {
+0|server  |       formats: [Object],
+0|server  |       parse: [Function (anonymous)],
+0|server  |       stringify: [Function (anonymous)]
+0|server  |     },
+0|server  |     useQuerystring: undefined,
+0|server  |     parseOptions: {},
+0|server  |     stringifyOptions: {}
+0|server  |   },
+0|server  |   _auth: Auth {
+0|server  |     request: [Circular *1],
+0|server  |     hasAuth: true,
+0|server  |     sentAuth: true,
+0|server  |     bearerToken: null,
+0|server  |     user: 'admin',
+0|server  |     pass: 'dankjewelpeter62'
+0|server  |   },
+0|server  |   _oauth: OAuth { request: [Circular *1], params: null },
+0|server  |   _multipart: Multipart {
+0|server  |     request: [Circular *1],
+0|server  |     boundary: '8db16d4f-a3ec-48f9-a33b-4d8e539d0eb7',
+0|server  |     chunked: false,
+0|server  |     body: null
+0|server  |   },
+0|server  |   _redirect: Redirect {
+0|server  |     request: [Circular *1],
+0|server  |     followRedirect: true,
+0|server  |     followRedirects: true,
+0|server  |     followAllRedirects: false,
+0|server  |     followOriginalHttpMethod: false,
+0|server  |     allowRedirect: [Function (anonymous)],
+0|server  |     maxRedirects: 10,
+0|server  |     redirects: [],
+0|server  |     redirectsFollowed: 0,
+0|server  |     removeRefererHeader: false
+0|server  |   },
+0|server  |   _tunnel: Tunnel {
+0|server  |     request: [Circular *1],
+0|server  |     proxyHeaderWhiteList: [
+0|server  |       'accept',           'accept-charset',
+0|server  |       'accept-encoding',  'accept-language',
+0|server  |       'accept-ranges',    'cache-control',
+0|server  |       'content-encoding', 'content-language',
+0|server  |       'content-location', 'content-md5',
+0|server  |       'content-range',    'content-type',
+0|server  |       'connection',       'date',
+0|server  |       'expect',           'max-forwards',
+0|server  |       'pragma',           'referer',
+0|server  |       'te',               'user-agent',
+0|server  |       'via'
+0|server  |     ],
+0|server  |     proxyHeaderExclusiveList: []
+0|server  |   },
+0|server  |   setHeader: [Function (anonymous)],
+0|server  |   hasHeader: [Function (anonymous)],
+0|server  |   getHeader: [Function (anonymous)],
+0|server  |   removeHeader: [Function (anonymous)],
+0|server  |   localAddress: undefined,
+0|server  |   pool: {},
+0|server  |   dests: [],
+0|server  |   __isRequestRequest: true,
+0|server  |   _callback: [Function: callback],
+0|server  |   uri: Url {
+0|server  |     protocol: 'http:',
+0|server  |     slashes: true,
+0|server  |     auth: null,
+0|server  |     host: '192.168.0.6:8000',
+0|server  |     port: '8000',
+0|server  |     hostname: '192.168.0.6',
+0|server  |     hash: null,
+0|server  |     search: null,
+0|server  |     query: null,
+0|server  |     pathname: '/api/dataLength',
+0|server  |     path: '/api/dataLength',
+0|server  |     href: 'http://192.168.0.6:8000/api/dataLength'
+0|server  |   },
+0|server  |   proxy: null,
+0|server  |   tunnel: false,
+0|server  |   setHost: true,
+0|server  |   originalCookieHeader: undefined,
+0|server  |   _disableCookies: true,
+0|server  |   _jar: undefined,
+0|server  |   port: '8000',
+0|server  |   host: '192.168.0.6',
+0|server  |   path: '/api/dataLength',
+0|server  |   httpModule: {
+0|server  |     _connectionListener: [Function: connectionListener],
+0|server  |     METHODS: [
+0|server  |       'ACL',         'BIND',       'CHECKOUT',
+0|server  |       'CONNECT',     'COPY',       'DELETE',
+0|server  |       'GET',         'HEAD',       'LINK',
+0|server  |       'LOCK',        'M-SEARCH',   'MERGE',
+0|server  |       'MKACTIVITY',  'MKCALENDAR', 'MKCOL',
+0|server  |       'MOVE',        'NOTIFY',     'OPTIONS',
+0|server  |       'PATCH',       'POST',       'PROPFIND',
+0|server  |       'PROPPATCH',   'PURGE',      'PUT',
+0|server  |       'REBIND',      'REPORT',     'SEARCH',
+0|server  |       'SOURCE',      'SUBSCRIBE',  'TRACE',
+0|server  |       'UNBIND',      'UNLINK',     'UNLOCK',
+0|server  |       'UNSUBSCRIBE'
+0|server  |     ],
+0|server  |     STATUS_CODES: {
+0|server  |       '100': 'Continue',
+0|server  |       '101': 'Switching Protocols',
+0|server  |       '102': 'Processing',
+0|server  |       '103': 'Early Hints',
+0|server  |       '200': 'OK',
+0|server  |       '201': 'Created',
+0|server  |       '202': 'Accepted',
+0|server  |       '203': 'Non-Authoritative Information',
+0|server  |       '204': 'No Content',
+0|server  |       '205': 'Reset Content',
+0|server  |       '206': 'Partial Content',
+0|server  |       '207': 'Multi-Status',
+0|server  |       '208': 'Already Reported',
+0|server  |       '226': 'IM Used',
+0|server  |       '300': 'Multiple Choices',
+0|server  |       '301': 'Moved Permanently',
+0|server  |       '302': 'Found',
+0|server  |       '303': 'See Other',
+0|server  |       '304': 'Not Modified',
+0|server  |       '305': 'Use Proxy',
+0|server  |       '307': 'Temporary Redirect',
+0|server  |       '308': 'Permanent Redirect',
+0|server  |       '400': 'Bad Request',
+0|server  |       '401': 'Unauthorized',
+0|server  |       '402': 'Payment Required',
+0|server  |       '403': 'Forbidden',
+0|server  |       '404': 'Not Found',
+0|server  |       '405': 'Method Not Allowed',
+0|server  |       '406': 'Not Acceptable',
+0|server  |       '407': 'Proxy Authentication Required',
+0|server  |       '408': 'Request Timeout',
+0|server  |       '409': 'Conflict',
+0|server  |       '410': 'Gone',
+0|server  |       '411': 'Length Required',
+0|server  |       '412': 'Precondition Failed',
+0|server  |       '413': 'Payload Too Large',
+0|server  |       '414': 'URI Too Long',
+0|server  |       '415': 'Unsupported Media Type',
+0|server  |       '416': 'Range Not Satisfiable',
+0|server  |       '417': 'Expectation Failed',
+0|server  |       '418': "I'm a Teapot",
+0|server  |       '421': 'Misdirected Request',
+0|server  |       '422': 'Unprocessable Entity',
+0|server  |       '423': 'Locked',
+0|server  |       '424': 'Failed Dependency',
+0|server  |       '425': 'Too Early',
+0|server  |       '426': 'Upgrade Required',
+0|server  |       '428': 'Precondition Required',
+0|server  |       '429': 'Too Many Requests',
+0|server  |       '431': 'Request Header Fields Too Large',
+0|server  |       '451': 'Unavailable For Legal Reasons',
+0|server  |       '500': 'Internal Server Error',
+0|server  |       '501': 'Not Implemented',
+0|server  |       '502': 'Bad Gateway',
+0|server  |       '503': 'Service Unavailable',
+0|server  |       '504': 'Gateway Timeout',
+0|server  |       '505': 'HTTP Version Not Supported',
+0|server  |       '506': 'Variant Also Negotiates',
+0|server  |       '507': 'Insufficient Storage',
+0|server  |       '508': 'Loop Detected',
+0|server  |       '509': 'Bandwidth Limit Exceeded',
+0|server  |       '510': 'Not Extended',
+0|server  |       '511': 'Network Authentication Required'
+0|server  |     },
+0|server  |     Agent: [Function: Agent] { defaultMaxSockets: Infinity },
+0|server  |     ClientRequest: [Function: ClientRequest],
+0|server  |     IncomingMessage: [Function: IncomingMessage],
+0|server  |     OutgoingMessage: [Function: OutgoingMessage],
+0|server  |     Server: [Function: Server],
+0|server  |     ServerResponse: [Function: ServerResponse],
+0|server  |     createServer: [Function: createServer],
+0|server  |     validateHeaderName: [Function: __node_internal_],
+0|server  |     validateHeaderValue: [Function: __node_internal_],
+0|server  |     get: [Function: get],
+0|server  |     request: [Function: request],
+0|server  |     maxHeaderSize: [Getter],
+0|server  |     globalAgent: [Getter/Setter]
+0|server  |   },
+0|server  |   agentClass: [Function: Agent] { defaultMaxSockets: Infinity },
+0|server  |   agent: Agent {
+0|server  |     _events: [Object: null prototype] {
+0|server  |       free: [Function (anonymous)],
+0|server  |       newListener: [Function: maybeEnableKeylog]
+0|server  |     },
+0|server  |     _eventsCount: 2,
+0|server  |     _maxListeners: undefined,
+0|server  |     defaultPort: 80,
+0|server  |     protocol: 'http:',
+0|server  |     options: [Object: null prototype] { path: null },
+0|server  |     requests: [Object: null prototype] {},
+0|server  |     sockets: [Object: null prototype] {},
+0|server  |     freeSockets: [Object: null prototype] {},
+0|server  |     keepAliveMsecs: 1000,
+0|server  |     keepAlive: false,
+0|server  |     maxSockets: Infinity,
+0|server  |     maxFreeSockets: 256,
+0|server  |     scheduling: 'lifo',
+0|server  |     maxTotalSockets: Infinity,
+0|server  |     totalSocketCount: 0,
+0|server  |     [Symbol(kCapture)]: false
+0|server  |   },
+0|server  |   [Symbol(kCapture)]: false
+0|server  | }
+0|server  | <ref *1> Request {
+0|server  |   _events: [Object: null prototype] {
+0|server  |     error: [Function: bound ],
+0|server  |     complete: [Function: bound ],
+0|server  |     pipe: [Function (anonymous)]
+0|server  |   },
+0|server  |   _eventsCount: 3,
+0|server  |   _maxListeners: undefined,
+0|server  |   method: 'POST',
+0|server  |   headers: {
+0|server  |     'Content-Type': 'application/json',
+0|server  |     host: '192.168.0.6:8000',
+0|server  |     authorization: 'Basic YWRtaW46ZGFua2pld2VscGV0ZXI2Mg==',
+0|server  |     'content-length': 36
+0|server  |   },
+0|server  |   body: '{"data":{"student_number":"460499"}}',
+0|server  |   callback: [Function (anonymous)],
+0|server  |   readable: true,
+0|server  |   writable: true,
+0|server  |   explicitMethod: true,
+0|server  |   _qs: Querystring {
+0|server  |     request: [Circular *1],
+0|server  |     lib: {
+0|server  |       formats: [Object],
+0|server  |       parse: [Function (anonymous)],
+0|server  |       stringify: [Function (anonymous)]
+0|server  |     },
+0|server  |     useQuerystring: undefined,
+0|server  |     parseOptions: {},
+0|server  |     stringifyOptions: {}
+0|server  |   },
+0|server  |   _auth: Auth {
+0|server  |     request: [Circular *1],
+0|server  |     hasAuth: true,
+0|server  |     sentAuth: true,
+0|server  |     bearerToken: null,
+0|server  |     user: 'admin',
+0|server  |     pass: 'dankjewelpeter62'
+0|server  |   },
+0|server  |   _oauth: OAuth { request: [Circular *1], params: null },
+0|server  |   _multipart: Multipart {
+0|server  |     request: [Circular *1],
+0|server  |     boundary: '8db16d4f-a3ec-48f9-a33b-4d8e539d0eb7',
+0|server  |     chunked: false,
+0|server  |     body: null
+0|server  |   },
+0|server  |   _redirect: Redirect {
+0|server  |     request: [Circular *1],
+0|server  |     followRedirect: true,
+0|server  |     followRedirects: true,
+0|server  |     followAllRedirects: false,
+0|server  |     followOriginalHttpMethod: false,
+0|server  |     allowRedirect: [Function (anonymous)],
+0|server  |     maxRedirects: 10,
+0|server  |     redirects: [],
+0|server  |     redirectsFollowed: 0,
+0|server  |     removeRefererHeader: false
+0|server  |   },
+0|server  |   _tunnel: Tunnel {
+0|server  |     request: [Circular *1],
+0|server  |     proxyHeaderWhiteList: [
+0|server  |       'accept',           'accept-charset',
+0|server  |       'accept-encoding',  'accept-language',
+0|server  |       'accept-ranges',    'cache-control',
+0|server  |       'content-encoding', 'content-language',
+0|server  |       'content-location', 'content-md5',
+0|server  |       'content-range',    'content-type',
+0|server  |       'connection',       'date',
+0|server  |       'expect',           'max-forwards',
+0|server  |       'pragma',           'referer',
+0|server  |       'te',               'user-agent',
+0|server  |       'via'
+0|server  |     ],
+0|server  |     proxyHeaderExclusiveList: []
+0|server  |   },
+0|server  |   setHeader: [Function (anonymous)],
+0|server  |   hasHeader: [Function (anonymous)],
+0|server  |   getHeader: [Function (anonymous)],
+0|server  |   removeHeader: [Function (anonymous)],
+0|server  |   localAddress: undefined,
+0|server  |   pool: {},
+0|server  |   dests: [],
+0|server  |   __isRequestRequest: true,
+0|server  |   _callback: [Function: callback],
+0|server  |   uri: Url {
+0|server  |     protocol: 'http:',
+0|server  |     slashes: true,
+0|server  |     auth: null,
+0|server  |     host: '192.168.0.6:8000',
+0|server  |     port: '8000',
+0|server  |     hostname: '192.168.0.6',
+0|server  |     hash: null,
+0|server  |     search: null,
+0|server  |     query: null,
+0|server  |     pathname: '/api/dataLength',
+0|server  |     path: '/api/dataLength',
+0|server  |     href: 'http://192.168.0.6:8000/api/dataLength'
+0|server  |   },
+0|server  |   proxy: null,
+0|server  |   tunnel: false,
+0|server  |   setHost: true,
+0|server  |   originalCookieHeader: undefined,
+0|server  |   _disableCookies: true,
+0|server  |   _jar: undefined,
+0|server  |   port: '8000',
+0|server  |   host: '192.168.0.6',
+0|server  |   path: '/api/dataLength',
+0|server  |   httpModule: {
+0|server  |     _connectionListener: [Function: connectionListener],
+0|server  |     METHODS: [
+0|server  |       'ACL',         'BIND',       'CHECKOUT',
+0|server  |       'CONNECT',     'COPY',       'DELETE',
+0|server  |       'GET',         'HEAD',       'LINK',
+0|server  |       'LOCK',        'M-SEARCH',   'MERGE',
+0|server  |       'MKACTIVITY',  'MKCALENDAR', 'MKCOL',
+0|server  |       'MOVE',        'NOTIFY',     'OPTIONS',
+0|server  |       'PATCH',       'POST',       'PROPFIND',
+0|server  |       'PROPPATCH',   'PURGE',      'PUT',
+0|server  |       'REBIND',      'REPORT',     'SEARCH',
+0|server  |       'SOURCE',      'SUBSCRIBE',  'TRACE',
+0|server  |       'UNBIND',      'UNLINK',     'UNLOCK',
+0|server  |       'UNSUBSCRIBE'
+0|server  |     ],
+0|server  |     STATUS_CODES: {
+0|server  |       '100': 'Continue',
+0|server  |       '101': 'Switching Protocols',
+0|server  |       '102': 'Processing',
+0|server  |       '103': 'Early Hints',
+0|server  |       '200': 'OK',
+0|server  |       '201': 'Created',
+0|server  |       '202': 'Accepted',
+0|server  |       '203': 'Non-Authoritative Information',
+0|server  |       '204': 'No Content',
+0|server  |       '205': 'Reset Content',
+0|server  |       '206': 'Partial Content',
+0|server  |       '207': 'Multi-Status',
+0|server  |       '208': 'Already Reported',
+0|server  |       '226': 'IM Used',
+0|server  |       '300': 'Multiple Choices',
+0|server  |       '301': 'Moved Permanently',
+0|server  |       '302': 'Found',
+0|server  |       '303': 'See Other',
+0|server  |       '304': 'Not Modified',
+0|server  |       '305': 'Use Proxy',
+0|server  |       '307': 'Temporary Redirect',
+0|server  |       '308': 'Permanent Redirect',
+0|server  |       '400': 'Bad Request',
+0|server  |       '401': 'Unauthorized',
+0|server  |       '402': 'Payment Required',
+0|server  |       '403': 'Forbidden',
+0|server  |       '404': 'Not Found',
+0|server  |       '405': 'Method Not Allowed',
+0|server  |       '406': 'Not Acceptable',
+0|server  |       '407': 'Proxy Authentication Required',
+0|server  |       '408': 'Request Timeout',
+0|server  |       '409': 'Conflict',
+0|server  |       '410': 'Gone',
+0|server  |       '411': 'Length Required',
+0|server  |       '412': 'Precondition Failed',
+0|server  |       '413': 'Payload Too Large',
+0|server  |       '414': 'URI Too Long',
+0|server  |       '415': 'Unsupported Media Type',
+0|server  |       '416': 'Range Not Satisfiable',
+0|server  |       '417': 'Expectation Failed',
+0|server  |       '418': "I'm a Teapot",
+0|server  |       '421': 'Misdirected Request',
+0|server  |       '422': 'Unprocessable Entity',
+0|server  |       '423': 'Locked',
+0|server  |       '424': 'Failed Dependency',
+0|server  |       '425': 'Too Early',
+0|server  |       '426': 'Upgrade Required',
+0|server  |       '428': 'Precondition Required',
+0|server  |       '429': 'Too Many Requests',
+0|server  |       '431': 'Request Header Fields Too Large',
+0|server  |       '451': 'Unavailable For Legal Reasons',
+0|server  |       '500': 'Internal Server Error',
+0|server  |       '501': 'Not Implemented',
+0|server  |       '502': 'Bad Gateway',
+0|server  |       '503': 'Service Unavailable',
+0|server  |       '504': 'Gateway Timeout',
+0|server  |       '505': 'HTTP Version Not Supported',
+0|server  |       '506': 'Variant Also Negotiates',
+0|server  |       '507': 'Insufficient Storage',
+0|server  |       '508': 'Loop Detected',
+0|server  |       '509': 'Bandwidth Limit Exceeded',
+0|server  |       '510': 'Not Extended',
+0|server  |       '511': 'Network Authentication Required'
+0|server  |     },
+0|server  |     Agent: [Function: Agent] { defaultMaxSockets: Infinity },
+0|server  |     ClientRequest: [Function: ClientRequest],
+0|server  |     IncomingMessage: [Function: IncomingMessage],
+0|server  |     OutgoingMessage: [Function: OutgoingMessage],
+0|server  |     Server: [Function: Server],
+0|server  |     ServerResponse: [Function: ServerResponse],
+0|server  |     createServer: [Function: createServer],
+0|server  |     validateHeaderName: [Function: __node_internal_],
+0|server  |     validateHeaderValue: [Function: __node_internal_],
+0|server  |     get: [Function: get],
+0|server  |     request: [Function: request],
+0|server  |     maxHeaderSize: [Getter],
+0|server  |     globalAgent: [Getter/Setter]
+0|server  |   },
+0|server  |   agentClass: [Function: Agent] { defaultMaxSockets: Infinity },
+0|server  |   agent: Agent {
+0|server  |     _events: [Object: null prototype] {
+0|server  |       free: [Function (anonymous)],
+0|server  |       newListener: [Function: maybeEnableKeylog]
+0|server  |     },
+0|server  |     _eventsCount: 2,
+0|server  |     _maxListeners: undefined,
+0|server  |     defaultPort: 80,
+0|server  |     protocol: 'http:',
+0|server  |     options: [Object: null prototype] { path: null },
+0|server  |     requests: [Object: null prototype] {},
+0|server  |     sockets: [Object: null prototype] {},
+0|server  |     freeSockets: [Object: null prototype] {},
+0|server  |     keepAliveMsecs: 1000,
+0|server  |     keepAlive: false,
+0|server  |     maxSockets: Infinity,
+0|server  |     maxFreeSockets: 256,
+0|server  |     scheduling: 'lifo',
+0|server  |     maxTotalSockets: Infinity,
+0|server  |     totalSocketCount: 0,
+0|server  |     [Symbol(kCapture)]: false
+0|server  |   },
+0|server  |   [Symbol(kCapture)]: false
+0|server  | }
+[TAILING] Tailing last 15 lines for [all] processes (change the value with --lines option)
+/home/web00-admin/.pm2/pm2.log last 15 lines:
+PM2        | 2021-11-22T14:44:53: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:44:53: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:44:53: PM2 log: pid=6909 msg=process killed
+PM2        | 2021-11-22T14:44:53: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:44:53: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:45:29: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:45:30: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:45:30: PM2 log: pid=7018 msg=process killed
+PM2        | 2021-11-22T14:45:30: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:45:30: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:46:50: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:46:50: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:46:50: PM2 log: pid=7119 msg=process killed
+PM2        | 2021-11-22T14:46:50: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:46:50: PM2 log: App [server:0] online
+
+/home/web00-admin/.pm2/logs/server-error.log last 15 lines:
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+0|server   | /home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:127
+0|server   | 	console.log(test);
+0|server   | 	            ^
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+/home/web00-admin/.pm2/logs/server-out.log last 15 lines:
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | 
+0|server   | > selfserviceportal@1.0.0 start
+0|server   | > nodemon --exec babel-node src/server.js
+0|server   | 
+0|server   | [33m[nodemon] 2.0.14[39m
+0|server   | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server   | [33m[nodemon] watching path(s): *.*[39m
+0|server   | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+0|server   | [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+0|server   | [32m[nodemon] restarting due to changes...[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+
+0|server  | > selfserviceportal@1.0.0 start
+0|server  | > nodemon --exec babel-node src/server.js
+0|server  | [33m[nodemon] 2.0.14[39m
+0|server  | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server  | [33m[nodemon] watching path(s): *.*[39m
+0|server  | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server  | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server  | Building a login system with NodeJS is running on port 8080!
+[TAILING] Tailing last 15 lines for [all] processes (change the value with --lines option)
+/home/web00-admin/.pm2/pm2.log last 15 lines:
+PM2        | 2021-11-22T14:45:29: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:45:30: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:45:30: PM2 log: pid=7018 msg=process killed
+PM2        | 2021-11-22T14:45:30: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:45:30: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:46:50: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:46:50: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:46:50: PM2 log: pid=7119 msg=process killed
+PM2        | 2021-11-22T14:46:50: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:46:50: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:47:16: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:47:16: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:47:17: PM2 log: pid=7237 msg=process killed
+PM2        | 2021-11-22T14:47:17: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:47:17: PM2 log: App [server:0] online
+
+/home/web00-admin/.pm2/logs/server-error.log last 15 lines:
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+0|server   | /home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:127
+0|server   | 	console.log(test);
+0|server   | 	            ^
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+/home/web00-admin/.pm2/logs/server-out.log last 15 lines:
+0|server   | [32m[nodemon] restarting due to changes...[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+0|server   | 
+0|server   | > selfserviceportal@1.0.0 start
+0|server   | > nodemon --exec babel-node src/server.js
+0|server   | 
+0|server   | [33m[nodemon] 2.0.14[39m
+0|server   | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server   | [33m[nodemon] watching path(s): *.*[39m
+0|server   | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+0|server   | [32m[nodemon] restarting due to changes...[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+
+0|server  | > selfserviceportal@1.0.0 start
+0|server  | > nodemon --exec babel-node src/server.js
+0|server  | [33m[nodemon] 2.0.14[39m
+0|server  | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server  | [33m[nodemon] watching path(s): *.*[39m
+0|server  | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server  | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server  | Building a login system with NodeJS is running on port 8080!
+0|server  | /home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:127
+0|server  | 	console.log(test);
+0|server  | 	            ^
+0|server  | ReferenceError: test is not defined
+0|server  |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server  |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server  |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server  |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+0|server  | [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[TAILING] Tailing last 15 lines for [all] processes (change the value with --lines option)
+/home/web00-admin/.pm2/pm2.log last 15 lines:
+PM2        | 2021-11-22T14:46:50: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:46:50: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:46:50: PM2 log: pid=7119 msg=process killed
+PM2        | 2021-11-22T14:46:50: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:46:50: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:47:16: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:47:16: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:47:17: PM2 log: pid=7237 msg=process killed
+PM2        | 2021-11-22T14:47:17: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:47:17: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:48:00: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:48:00: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:48:00: PM2 log: pid=7334 msg=process killed
+PM2        | 2021-11-22T14:48:00: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:48:00: PM2 log: App [server:0] online
+
+/home/web00-admin/.pm2/logs/server-error.log last 15 lines:
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+0|server   | /home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:127
+0|server   | 	console.log(test);
+0|server   | 	            ^
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+/home/web00-admin/.pm2/logs/server-out.log last 15 lines:
+0|server   | [32m[nodemon] restarting due to changes...[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | 
+0|server   | > selfserviceportal@1.0.0 start
+0|server   | > nodemon --exec babel-node src/server.js
+0|server   | 
+0|server   | [33m[nodemon] 2.0.14[39m
+0|server   | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server   | [33m[nodemon] watching path(s): *.*[39m
+0|server   | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+0|server   | [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+0|server   | [32m[nodemon] restarting due to changes...[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+
+0|server  | > selfserviceportal@1.0.0 start
+0|server  | > nodemon --exec babel-node src/server.js
+0|server  | [33m[nodemon] 2.0.14[39m
+0|server  | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server  | [33m[nodemon] watching path(s): *.*[39m
+0|server  | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server  | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server  | Building a login system with NodeJS is running on port 8080!
+0|server  | [Function: dataLength]
+[TAILING] Tailing last 15 lines for [all] processes (change the value with --lines option)
+/home/web00-admin/.pm2/pm2.log last 15 lines:
+PM2        | 2021-11-22T14:47:16: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:47:16: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:47:17: PM2 log: pid=7237 msg=process killed
+PM2        | 2021-11-22T14:47:17: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:47:17: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:48:00: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:48:00: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:48:00: PM2 log: pid=7334 msg=process killed
+PM2        | 2021-11-22T14:48:00: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:48:00: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:50:43: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:50:43: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:50:43: PM2 log: pid=7450 msg=process killed
+PM2        | 2021-11-22T14:50:43: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:50:43: PM2 log: App [server:0] online
+
+/home/web00-admin/.pm2/logs/server-error.log last 15 lines:
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+0|server   | /home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:127
+0|server   | 	console.log(test);
+0|server   | 	            ^
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+/home/web00-admin/.pm2/logs/server-out.log last 15 lines:
+0|server   | [32m[nodemon] restarting due to changes...[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | 
+0|server   | > selfserviceportal@1.0.0 start
+0|server   | > nodemon --exec babel-node src/server.js
+0|server   | 
+0|server   | [33m[nodemon] 2.0.14[39m
+0|server   | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server   | [33m[nodemon] watching path(s): *.*[39m
+0|server   | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+0|server   | [Function: dataLength]
+0|server   | [32m[nodemon] restarting due to changes...[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+
+0|server  | > selfserviceportal@1.0.0 start
+0|server  | > nodemon --exec babel-node src/server.js
+0|server  | [33m[nodemon] 2.0.14[39m
+0|server  | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server  | [33m[nodemon] watching path(s): *.*[39m
+0|server  | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server  | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server  | Building a login system with NodeJS is running on port 8080!
+0|server  | /home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:130
+0|server  | 	console.log(lol);
+0|server  | 	            ^
+0|server  | ReferenceError: lol is not defined
+0|server  |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:126:14)
+0|server  |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server  |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server  |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+0|server  | [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[TAILING] Tailing last 15 lines for [all] processes (change the value with --lines option)
+/home/web00-admin/.pm2/pm2.log last 15 lines:
+PM2        | 2021-11-22T14:48:00: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:48:00: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:48:00: PM2 log: pid=7334 msg=process killed
+PM2        | 2021-11-22T14:48:00: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:48:00: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:50:43: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:50:43: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:50:43: PM2 log: pid=7450 msg=process killed
+PM2        | 2021-11-22T14:50:43: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:50:43: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:52:43: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:52:44: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:52:44: PM2 log: pid=7614 msg=process killed
+PM2        | 2021-11-22T14:52:44: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:52:44: PM2 log: App [server:0] online
+
+/home/web00-admin/.pm2/logs/server-error.log last 15 lines:
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+0|server   | /home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:130
+0|server   | 	console.log(lol);
+0|server   | 	            ^
+0|server   | 
+0|server   | ReferenceError: lol is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:126:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+/home/web00-admin/.pm2/logs/server-out.log last 15 lines:
+0|server   | [32m[nodemon] restarting due to changes...[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | 
+0|server   | > selfserviceportal@1.0.0 start
+0|server   | > nodemon --exec babel-node src/server.js
+0|server   | 
+0|server   | [33m[nodemon] 2.0.14[39m
+0|server   | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server   | [33m[nodemon] watching path(s): *.*[39m
+0|server   | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+0|server   | [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+0|server   | [32m[nodemon] restarting due to changes...[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+
+0|server  | > selfserviceportal@1.0.0 start
+0|server  | > nodemon --exec babel-node src/server.js
+0|server  | [33m[nodemon] 2.0.14[39m
+0|server  | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server  | [33m[nodemon] watching path(s): *.*[39m
+0|server  | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server  | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server  | Building a login system with NodeJS is running on port 8080!
+[TAILING] Tailing last 15 lines for [all] processes (change the value with --lines option)
+/home/web00-admin/.pm2/pm2.log last 15 lines:
+PM2        | 2021-11-22T14:52:43: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:52:44: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:52:44: PM2 log: pid=7614 msg=process killed
+PM2        | 2021-11-22T14:52:44: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:52:44: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:52:59: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:52:59: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:52:59: PM2 log: pid=7756 msg=process killed
+PM2        | 2021-11-22T14:52:59: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:52:59: PM2 log: App [server:0] online
+PM2        | 2021-11-22T14:53:08: PM2 log: Stopping app:server id:0
+PM2        | 2021-11-22T14:53:08: PM2 log: App [server:0] exited with code [0] via signal [SIGINT]
+PM2        | 2021-11-22T14:53:08: PM2 log: pid=7829 msg=process killed
+PM2        | 2021-11-22T14:53:08: PM2 log: App [server:0] starting in -fork mode-
+PM2        | 2021-11-22T14:53:08: PM2 log: App [server:0] online
+
+/home/web00-admin/.pm2/logs/server-error.log last 15 lines:
+0|server   | 
+0|server   | ReferenceError: test is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:123:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+0|server   | /home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:130
+0|server   | 	console.log(lol);
+0|server   | 	            ^
+0|server   | 
+0|server   | ReferenceError: lol is not defined
+0|server   |     at Object.dataLength (/home/web00-admin/pte2-api-V2/pte2-api/src/services/apiRequest.js:126:14)
+0|server   |     at Query.onResult (/home/web00-admin/pte2-api-V2/pte2-api/src/controllers/optionsController.js:205:35)
+0|server   |     at /home/web00-admin/pte2-api-V2/pte2-api/node_modules/mysql2/lib/commands/query.js:70:16
+0|server   |     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+/home/web00-admin/.pm2/logs/server-out.log last 15 lines:
+0|server   | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server   | [33m[nodemon] watching path(s): *.*[39m
+0|server   | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+0|server   | 
+0|server   | > selfserviceportal@1.0.0 start
+0|server   | > nodemon --exec babel-node src/server.js
+0|server   | 
+0|server   | [33m[nodemon] 2.0.14[39m
+0|server   | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server   | [33m[nodemon] watching path(s): *.*[39m
+0|server   | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server   | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server   | Building a login system with NodeJS is running on port 8080!
+
+0|server  | > selfserviceportal@1.0.0 start
+0|server  | > nodemon --exec babel-node src/server.js
+0|server  | [33m[nodemon] 2.0.14[39m
+0|server  | [33m[nodemon] to restart at any time, enter `rs`[39m
+0|server  | [33m[nodemon] watching path(s): *.*[39m
+0|server  | [33m[nodemon] watching extensions: js,mjs,json[39m
+0|server  | [32m[nodemon] starting `babel-node src/server.js`[39m
+0|server  | Building a login system with NodeJS is running on port 8080!
+0|server  | <ref *1> Request {
+0|server  |   _events: [Object: null prototype] {
+0|server  |     error: [Function: bound ],
+0|server  |     complete: [Function: bound ],
+0|server  |     pipe: [Function (anonymous)]
+0|server  |   },
+0|server  |   _eventsCount: 3,
+0|server  |   _maxListeners: undefined,
+0|server  |   method: 'POST',
+0|server  |   headers: {
+0|server  |     'Content-Type': 'application/json',
+0|server  |     host: '192.168.0.6:8000',
+0|server  |     authorization: 'Basic YWRtaW46ZGFua2pld2VscGV0ZXI2Mg==',
+0|server  |     'content-length': 36
+0|server  |   },
+0|server  |   body: '{"data":{"student_number":"460499"}}',
+0|server  |   callback: [Function (anonymous)],
+0|server  |   readable: true,
+0|server  |   writable: true,
+0|server  |   explicitMethod: true,
+0|server  |   _qs: Querystring {
+0|server  |     request: [Circular *1],
+0|server  |     lib: {
+0|server  |       formats: [Object],
+0|server  |       parse: [Function (anonymous)],
+0|server  |       stringify: [Function (anonymous)]
+0|server  |     },
+0|server  |     useQuerystring: undefined,
+0|server  |     parseOptions: {},
+0|server  |     stringifyOptions: {}
+0|server  |   },
+0|server  |   _auth: Auth {
+0|server  |     request: [Circular *1],
+0|server  |     hasAuth: true,
+0|server  |     sentAuth: true,
+0|server  |     bearerToken: null,
+0|server  |     user: 'admin',
+0|server  |     pass: 'dankjewelpeter62'
+0|server  |   },
+0|server  |   _oauth: OAuth { request: [Circular *1], params: null },
+0|server  |   _multipart: Multipart {
+0|server  |     request: [Circular *1],
+0|server  |     boundary: '840ccd2e-a78e-4129-bf5b-86173cc5e287',
+0|server  |     chunked: false,
+0|server  |     body: null
+0|server  |   },
+0|server  |   _redirect: Redirect {
+0|server  |     request: [Circular *1],
+0|server  |     followRedirect: true,
+0|server  |     followRedirects: true,
+0|server  |     followAllRedirects: false,
+0|server  |     followOriginalHttpMethod: false,
+0|server  |     allowRedirect: [Function (anonymous)],
+0|server  |     maxRedirects: 10,
+0|server  |     redirects: [],
+0|server  |     redirectsFollowed: 0,
+0|server  |     removeRefererHeader: false
+0|server  |   },
+0|server  |   _tunnel: Tunnel {
+0|server  |     request: [Circular *1],
+0|server  |     proxyHeaderWhiteList: [
+0|server  |       'accept',           'accept-charset',
+0|server  |       'accept-encoding',  'accept-language',
+0|server  |       'accept-ranges',    'cache-control',
+0|server  |       'content-encoding', 'content-language',
+0|server  |       'content-location', 'content-md5',
+0|server  |       'content-range',    'content-type',
+0|server  |       'connection',       'date',
+0|server  |       'expect',           'max-forwards',
+0|server  |       'pragma',           'referer',
+0|server  |       'te',               'user-agent',
+0|server  |       'via'
+0|server  |     ],
+0|server  |     proxyHeaderExclusiveList: []
+0|server  |   },
+0|server  |   setHeader: [Function (anonymous)],
+0|server  |   hasHeader: [Function (anonymous)],
+0|server  |   getHeader: [Function (anonymous)],
+0|server  |   removeHeader: [Function (anonymous)],
+0|server  |   localAddress: undefined,
+0|server  |   pool: {},
+0|server  |   dests: [],
+0|server  |   __isRequestRequest: true,
+0|server  |   _callback: [Function: callback],
+0|server  |   uri: Url {
+0|server  |     protocol: 'http:',
+0|server  |     slashes: true,
+0|server  |     auth: null,
+0|server  |     host: '192.168.0.6:8000',
+0|server  |     port: '8000',
+0|server  |     hostname: '192.168.0.6',
+0|server  |     hash: null,
+0|server  |     search: null,
+0|server  |     query: null,
+0|server  |     pathname: '/api/dataLength',
+0|server  |     path: '/api/dataLength',
+0|server  |     href: 'http://192.168.0.6:8000/api/dataLength'
+0|server  |   },
+0|server  |   proxy: null,
+0|server  |   tunnel: false,
+0|server  |   setHost: true,
+0|server  |   originalCookieHeader: undefined,
+0|server  |   _disableCookies: true,
+0|server  |   _jar: undefined,
+0|server  |   port: '8000',
+0|server  |   host: '192.168.0.6',
+0|server  |   path: '/api/dataLength',
+0|server  |   httpModule: {
+0|server  |     _connectionListener: [Function: connectionListener],
+0|server  |     METHODS: [
+0|server  |       'ACL',         'BIND',       'CHECKOUT',
+0|server  |       'CONNECT',     'COPY',       'DELETE',
+0|server  |       'GET',         'HEAD',       'LINK',
+0|server  |       'LOCK',        'M-SEARCH',   'MERGE',
+0|server  |       'MKACTIVITY',  'MKCALENDAR', 'MKCOL',
+0|server  |       'MOVE',        'NOTIFY',     'OPTIONS',
+0|server  |       'PATCH',       'POST',       'PROPFIND',
+0|server  |       'PROPPATCH',   'PURGE',      'PUT',
+0|server  |       'REBIND',      'REPORT',     'SEARCH',
+0|server  |       'SOURCE',      'SUBSCRIBE',  'TRACE',
+0|server  |       'UNBIND',      'UNLINK',     'UNLOCK',
+0|server  |       'UNSUBSCRIBE'
+0|server  |     ],
+0|server  |     STATUS_CODES: {
+0|server  |       '100': 'Continue',
+0|server  |       '101': 'Switching Protocols',
+0|server  |       '102': 'Processing',
+0|server  |       '103': 'Early Hints',
+0|server  |       '200': 'OK',
+0|server  |       '201': 'Created',
+0|server  |       '202': 'Accepted',
+0|server  |       '203': 'Non-Authoritative Information',
+0|server  |       '204': 'No Content',
+0|server  |       '205': 'Reset Content',
+0|server  |       '206': 'Partial Content',
+0|server  |       '207': 'Multi-Status',
+0|server  |       '208': 'Already Reported',
+0|server  |       '226': 'IM Used',
+0|server  |       '300': 'Multiple Choices',
+0|server  |       '301': 'Moved Permanently',
+0|server  |       '302': 'Found',
+0|server  |       '303': 'See Other',
+0|server  |       '304': 'Not Modified',
+0|server  |       '305': 'Use Proxy',
+0|server  |       '307': 'Temporary Redirect',
+0|server  |       '308': 'Permanent Redirect',
+0|server  |       '400': 'Bad Request',
+0|server  |       '401': 'Unauthorized',
+0|server  |       '402': 'Payment Required',
+0|server  |       '403': 'Forbidden',
+0|server  |       '404': 'Not Found',
+0|server  |       '405': 'Method Not Allowed',
+0|server  |       '406': 'Not Acceptable',
+0|server  |       '407': 'Proxy Authentication Required',
+0|server  |       '408': 'Request Timeout',
+0|server  |       '409': 'Conflict',
+0|server  |       '410': 'Gone',
+0|server  |       '411': 'Length Required',
+0|server  |       '412': 'Precondition Failed',
+0|server  |       '413': 'Payload Too Large',
+0|server  |       '414': 'URI Too Long',
+0|server  |       '415': 'Unsupported Media Type',
+0|server  |       '416': 'Range Not Satisfiable',
+0|server  |       '417': 'Expectation Failed',
+0|server  |       '418': "I'm a Teapot",
+0|server  |       '421': 'Misdirected Request',
+0|server  |       '422': 'Unprocessable Entity',
+0|server  |       '423': 'Locked',
+0|server  |       '424': 'Failed Dependency',
+0|server  |       '425': 'Too Early',
+0|server  |       '426': 'Upgrade Required',
+0|server  |       '428': 'Precondition Required',
+0|server  |       '429': 'Too Many Requests',
+0|server  |       '431': 'Request Header Fields Too Large',
+0|server  |       '451': 'Unavailable For Legal Reasons',
+0|server  |       '500': 'Internal Server Error',
+0|server  |       '501': 'Not Implemented',
+0|server  |       '502': 'Bad Gateway',
+0|server  |       '503': 'Service Unavailable',
+0|server  |       '504': 'Gateway Timeout',
+0|server  |       '505': 'HTTP Version Not Supported',
+0|server  |       '506': 'Variant Also Negotiates',
+0|server  |       '507': 'Insufficient Storage',
+0|server  |       '508': 'Loop Detected',
+0|server  |       '509': 'Bandwidth Limit Exceeded',
+0|server  |       '510': 'Not Extended',
+0|server  |       '511': 'Network Authentication Required'
+0|server  |     },
+0|server  |     Agent: [Function: Agent] { defaultMaxSockets: Infinity },
+0|server  |     ClientRequest: [Function: ClientRequest],
+0|server  |     IncomingMessage: [Function: IncomingMessage],
+0|server  |     OutgoingMessage: [Function: OutgoingMessage],
+0|server  |     Server: [Function: Server],
+0|server  |     ServerResponse: [Function: ServerResponse],
+0|server  |     createServer: [Function: createServer],
+0|server  |     validateHeaderName: [Function: __node_internal_],
+0|server  |     validateHeaderValue: [Function: __node_internal_],
+0|server  |     get: [Function: get],
+0|server  |     request: [Function: request],
+0|server  |     maxHeaderSize: [Getter],
+0|server  |     globalAgent: [Getter/Setter]
+0|server  |   },
+0|server  |   agentClass: [Function: Agent] { defaultMaxSockets: Infinity },
+0|server  |   agent: Agent {
+0|server  |     _events: [Object: null prototype] {
+0|server  |       free: [Function (anonymous)],
+0|server  |       newListener: [Function: maybeEnableKeylog]
+0|server  |     },
+0|server  |     _eventsCount: 2,
+0|server  |     _maxListeners: undefined,
+0|server  |     defaultPort: 80,
+0|server  |     protocol: 'http:',
+0|server  |     options: [Object: null prototype] { path: null },
+0|server  |     requests: [Object: null prototype] {},
+0|server  |     sockets: [Object: null prototype] {},
+0|server  |     freeSockets: [Object: null prototype] {},
+0|server  |     keepAliveMsecs: 1000,
+0|server  |     keepAlive: false,
+0|server  |     maxSockets: Infinity,
+0|server  |     maxFreeSockets: 256,
+0|server  |     scheduling: 'lifo',
+0|server  |     maxTotalSockets: Infinity,
+0|server  |     totalSocketCount: 0,
+0|server  |     [Symbol(kCapture)]: false
+0|server  |   },
+0|server  |   [Symbol(kCapture)]: false
+0|server  | }

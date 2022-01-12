@@ -65,7 +65,7 @@
                     <div class="card">
                         <!-- Card header -->
                         <div class="card-header">
-                            Preference selection
+                            Template selection
                         </div>
                         <!-- Card body -->
                         <div class="card-body">
@@ -82,7 +82,7 @@
                                 <select name="webserver" id="webserver">
                                     <option value="Apache">Apache2</option>
                                     <option value="Wordpress">Wordpress</option>
-                                    <option value="NodeJS">NodeJS</option>
+                                    <!--<option value="NodeJS">NodeJS</option>-->
                                 </select>
                                 <!-- Break to space the two select attributes-->
                                 <br>
@@ -90,7 +90,7 @@
                                 <label for="database">Database:</label>
                                 <select name="database" id="database">
                                     <option value="MySQL">MySQL</option>
-                                    <option value="MongoDB">MongoDB</option>
+                                    <!--<option value="MariaDB">MariaDB</option>-->
                                     <option value="nDB">No database</option>
                                 </select>
                                 <!-- Button to submit the form -->
@@ -101,11 +101,8 @@
                         </div>
                     </div>
 
-                    <!-- Break to space the two cards-->
-                    <br>
-
                     <!-- Project files card -->
-                    <div class="card">
+                    <div class="card" id="projectfiles">
                         <!-- Card header -->
                         <div class="card-header">
                             Project files
@@ -135,17 +132,17 @@
                                     </div>
                                     <br>
                                     <div class="d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-color">Submit files</button>
+                                        <button type="submit" id="uploadButton" class="btn btn-color">Submit files</button>
                                     </div>
                                 </form>
                             </div>
 
                             <!-- Information for the filedrop upload method -->
                             <div id="filedrop" style="display: none;">
-                                <p>The upload is password protected, hover the fontys logo to show the password. Copy the password and click the Upload files button.</p>
+                                <p>The upload is password protected, check the box to show the password. Copy the password and click the Upload files button.</p>
                                 <div class="input-group flex-nowrap">
                                     <span class="input-group-text">Password</span>
-                                    <input type="password" id="password" class="form-control" value="<%= user.files_pass %>" data-toggle="password">
+                                    <input type="password" id="password" class="form-control" value="<%= user.files_pass %>" data-toggle="password" autocomplete="false" readonly>
                                     <div class="input-group-text">
                                         <input type="checkbox" aria-label="Show password" onclick="showPassword();">
                                     </div>
@@ -153,40 +150,36 @@
                                 <br>
                                 <!-- Button to show the filedrop iframe -->
                                 <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn btn-color" data-toggle="modal" data-target="#modalUpload">Upload files</button>
+					<form method="post" action="/nextcloudUpload">
+                                    <button type="submit" id="uploadButton" class="btn btn-color">Upload files</button>
+					</form>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Break to space the two cards -->
-                    <br>
-
                     <!-- Instance status card-->
                     <div class="card">
                         <!-- Card header -->
                         <div class="card-header">
-                            Instance status
+                            Start/Stop Instance
                         </div>
                         <!-- Card body -->
                         <div class="card-body">
                             <!-- Information about how to start an instance-->
-                            <p>You can start a new instance after the old one has expired. When you start an instance it will be available for 2 hours.</p>
-                            <p>When you check this box all the data on your old instance will be removed and the newly uploaded data will be used.</p>
-                            <!-- Form to start the instance -->
+                            <p>You can start a new instance after the old one has expired. When you start an instance it will be available for 2 hours.</p>    
+			    <!-- Form to start the instance -->
                             <form method="POST" action="/startInstance" id="instanceForm">
-                                    <label for="checkbox">Remove data?</label>
-                                    <input type="checkbox" id="checkbox" name="checkbox" value="remove">
-                                
+				    <div id="wordpressProgress">
+	                                    <label for="checkbox">Delete wordpress progress:</label>
+        	                            <input type="checkbox" id="checkbox" name="checkbox" value="delete">
+                		    </div>                
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-success float-right" id="instanceButton">Start instance</button>
                                 </div>
                             </form>    
                         </div>
                     </div>
-
-                    <!-- Break to space the two cards -->
-                    <br>
 
                 </div>
 
@@ -218,37 +211,26 @@
                                     <td>Database</td>
                                     <td><%= info.database %></td>
                                 </tr>
-                                <!-- Total files uploaded -->
-                                <tr>
-                                    <td>Total files uploaded</td>
-                                    <td><%= info.files_uploaded %></td>
-                                </tr>
-                                <!-- SSL installed? -->
-                                <tr>
-                                    <td>SSL installed?</td>
-                                    <td>yes</td>
-                                </tr>
+				<% if (info.tmp_database != "") { %>
                                 <!-- Database host -->
                                 <tr>
-                                    <td>Database host</td>
-                                    <td>localhost</td>
+                                    <td>Database hostname</td>
+                                    <td>database</td>
                                 </tr>
                                 <!-- Database username -->
                                 <tr>
-                                    <td>Database username</td>
-                                    <td>test</td>
+                                    <td><%- info.database %> username</td>
+                                    <td><%- info.username %></td>
                                 </tr>
                                 <!-- Database password -->
                                 <tr>
-                                    <td>Database password</td>
-                                    <td>test</td>
+                                    <td><%- info.database %> password</td>
+                                    <td><%- info.password %></td>
                                 </tr>
+				<% }; %>
                             </table>    
                         </div>
                     </div>     
-
-                    <!-- Break to space the two cards-->
-                    <br>
 
                     <!-- Instance timer card -->
                     <div class="card">
@@ -262,25 +244,34 @@
                             <p>We use a fair use policy so everyone had a chance to host there project. Therefor we choose to use shutdown every instance after 2 hours.</p>
                             <!-- Element to show the timer -->
                             <div class="d-flex justify-content-center">
-                                <p id="timer"></p>
+                                <p id="timer">No running instance...</p>
                             </div>    
                         </div>
                     </div>
-
-                    <!-- Break to space the two cards -->
-                    <br>
 
                     <div class="card">
                         <div class="card-header">
                             Monitoring
                         </div>
-                        <div class="card-body">
-                            <p>Monitoring view here!</p>
+			<div class="card-body">
+			   <p>Information about the running instance is visualised below. Information about the percentage of cpu usage and memory usage in MBs are shown. Every 10 seconds the information will be updated automatically.</p>
+			   <iframe src="https://pte2.tech/monitoring" style="height:120px;width:250px;display:block;margin-right:auto;margin-left:auto;" frameBorder="0" scrolling="no"></iframe>
                         </div>
                     </div>
-
-                    <!-- Break to space the two cards -->
-                    <br>
+	
+		    <div class="card">
+			<div class="card-header">
+				Reset account
+			</div>
+			<div class="card-body">
+				<p>Encountering any problems? Try to reset your account. Resetting your account will delete al your personal data, files and other progress. Use with care!</p>
+				<form action="/offboard" method="POST">
+					<div class="d-flex justify-content-end">
+						<button type="submit" class="btn btn-danger">Reset account</button>
+					</div>
+				</form>
+			</div>
+		    </div>
 
                 </div>
             </div>
@@ -294,7 +285,7 @@
                     <div class="modal-body mb-0 p-0">
                       <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
                             <!-- Iframe element -->
-                            <!-- <iframe class="embed-responsive-item" src="<%= user.files_url %>" allowfullscreen></iframe> -->
+                            <iframe class="embed-responsive-item" src="<%= user.files_url %>" allowfullscreen></iframe>
                             <form class="d-none" method="post" action="/filesUploaded">
                                 <button type="submit" id="uploadFiles"></button>
                             </form>
@@ -315,21 +306,20 @@
                         <div id="modalBodyFirst">
                             <!-- Modal header -->
                             <div class="modal-header">
-                                <h4 style="color: #663366; font-weight: bold;">Welcome on the FHICT selfservice portal.</h4>
+                                <h4 style="color: #663366; font-weight: bold;">Welcome to the MediaDesign Self Service Portal.</h4>
                             </div>
                             <!-- Modal body -->
                             <div class="modal-body">
-                                <p>By using the self-service portal, it is very easy to roll out your created web project and host it to test the functionality.</p>
-                                <p>After just 3 steps, you hosted your project.</p>
-
+                                <p>By using the self-service portal, it is very easy to roll out your web project and to test the functionality.</p>
+                            
                                 <h3><span class="badge rounded-pill btn-color">Step 1</span></h3>
-                                    <p>The first step is selecting the instance type and if needed a database. </p>
+                                    <p>Choose your hosting application and a database if needed.</p>
 
                                 <h3><span class="badge rounded-pill btn-color">Step 2</span></h3>
-                                    <p>The second step is uploading your project files.</p>
+                                    <p>Upload your project files or provide a Github URL.</p>
 
                                 <h3><span class="badge rounded-pill btn-color">Step 3</span></h3>
-                                    <p>The third and last step is starting the instance.</p>
+                                    <p>Confirm your choices by starting the instance. Your project is available at your own subdomain.</p>
                             </div>
                             <!-- Modal footer -->
                             <div class="modal-footer">
@@ -340,24 +330,26 @@
                         <div id="modalBodySecond" style="display: none;">
                             <!-- Modal header -->
                             <div class="modal-header">
-                                <h4 style="color: #663366; font-weight: bold;">Welcome on the FHICT selfservice portal.</h4>
+                                <h4 style="color: #663366; font-weight: bold;">Welcome to the MediaDesign Self Service Portal.</h4>
                             </div>
                             <!-- Modal body -->
                             <div class="modal-body">
-                                <p>Using the self-service portal it is possible to host your project for a time period of 2 hours. After that, your instance will be stopped and you may launch a new instance if necessary.</p>
-                                <p>As the self-serve portal is used by a large number of students, we have a fair dealing policy, please follow the rules and adhere to the network.</p>
+                                <p>Using the Self Service Portal it is possible to host your project for a time period of 2 hours. After that, your instance will be stopped and you may launch a new instance if necessary.</p>
+                                <p>As the Self Service Portal is used by a large number of students, we have a fair use policy. Please follow the rules and adhere to the network.</p>
     
                                 <h5>Fair use policy</h5>
     
                                 <ol>
-                                    <li>Your instance will be stopped after 2 hours, if you have finished before expiry of the timer, stop the instance.</li>
-                                    <li>Use only the self-service portal for school projects! Your account'll be blocked if you don't.</li>
+                                    <li>Your instance will be stopped in 2 hours, if you have finished before the timer expires please stop the instance.</li>
+                                    <li>Use only the Self Service Portal for school projects! Your account will be blocked if you do not.</li>
                                 </ol>
                             </div>
                             <!-- Modal footer-->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-color" id="modalIntroSecond">Start exploring</button>
-                            </div>
+				<form method="post" action="/introDone">
+	                                <button type="submit" class="btn btn-color" id="modalIntroSecond">Start exploring</button>
+        			</form>
+	                    </div>
                         </div>
                     </div>         
                 </div>
@@ -380,6 +372,14 @@
                 $('#modalIntro').modal('show');
             });
         };  
+
+	var hasParam = window.location.href.indexOf('?#modalUpload');
+
+	if (hasParam != -1) {
+		$('#modalUpload').modal('show');
+	} else {
+		$('#modalUpload').modal('hide');
+	}
         
         //Define multiple variables for showing the intro modal and the data
         const modalIntroFirst = document.getElementById('modalIntroFirst');
@@ -409,6 +409,8 @@
         const webserverOption = document.getElementById('webserver');
         const databaseOption = document.getElementById('database');
         const selectedDatabase = '<%= info.tmp_database %>';
+	const wordpressProgress = document.getElementById('wordpressProgress');
+	const projectfilesView = document.getElementById('projectfiles');
 
         //Show the currently selected options
         webserverOption.value = '<%= info.tmp_instance_type %>';
@@ -422,7 +424,12 @@
         if(webserverOption.value === 'Wordpress') {
             //Disable the database option
             databaseOption.disabled = true;
-        }
+	    wordpressProgress.style.visibility = 'block';
+	    projectfilesView.style.display = 'none';
+        } else {
+	    wordpressProgress.style.visibility = 'hidden';
+	    projectfilesView.style.display = 'hidden';
+	}
 
         //This function is called when the select option changes
         function checkOption() {
@@ -437,6 +444,7 @@
             else {
                 //Enable the database option
                 databaseOption.disabled = false;
+		wordpressProgress.style.visibility = 'hidden';
             }
         }
 
@@ -482,10 +490,11 @@
 
         //Variable where the valid until time is saved
         const validUntil = new Date('<%= info.valid_until %>').getTime();
+
         //Save instance start/stop elements in variables
         const instanceButton = document.getElementById('instanceButton');
         const instanceForm = document.getElementById('instanceForm'); 
-
+   
         //Create an interval function
         var x = setInterval(function() {
             //Instantiate a variable for the timer element
@@ -499,6 +508,7 @@
             var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((diff % (1000 * 60)) / 1000);
             //Get the timer element and put the calculated time inside the element
+	    document.title = "Self Service Portal - " + hours + ":" + minutes + ":" + seconds;
             timer.innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
             //Check if the instance running time has been expired
             if (diff < 1000 && diff > 0) {
@@ -511,11 +521,17 @@
                 timer.style.color = "red";
             }
             //Check if there is no time left
-            if (diff < 0) {
+	    if (isNaN(diff)) {
+		timer.innerHTML = 'No running instance...';
+		document.title = "Self Service Portal";
+	    }
+            else if (diff < 0) {
                 //Clear the interval function
                 clearInterval(x);
+                timer.style.color = "red";
                 //Set the timer text to INSTANCE EXPIRED
                 timer.innerHTML = 'INSTANCE EXPIRED';
+		document.title = "Self Service Portal";
             } else {
                 //When the instance is running 
                 //Change the button text to stop instance
@@ -524,6 +540,7 @@
                 instanceButton.className = 'btn btn-danger';
                 //Change the form action so the instance stops when clicked
                 instanceForm.action = '/stopInstance'; 
+		wordpressProgress.style.visibility = 'hidden';
             }
             //Run this function every second
         }, 1000);
